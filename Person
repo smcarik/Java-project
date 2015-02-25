@@ -1,1 +1,29 @@
-
+public class Person
+{
+ String name;
+ String ssn;
+ public void setName(String name)
+ {
+  name=name; 
+ }
+ public void setSsn(String ssn)
+ {
+   ssn=ssn;
+ }
+ public String getName()
+ {
+  return name; 
+ }
+ public String getSsn()
+ {
+  return ssn; 
+ }
+ public void display()
+ {
+   
+ }
+ public String toString()
+ {
+   return "Name: " + name + " SSN: " + ssn;
+ }
+}
