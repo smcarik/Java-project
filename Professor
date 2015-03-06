@@ -1,34 +1,47 @@
-public class Professor
-{
+import java.util.*;
+
+public class Professor 
+{ 
   private String title, department;
+  ArrayList<String> section = new ArrayList<String>();
   
-  public void setTitle(String title)
-  {
-    this.title = title;
-  }
+  public void setTitle(String title) 
+  { 
+    this.title = title; 
+  } 
   
-  public String getTitle()
-  {
-    return title;
-  }
+  public String getTitle() 
+  { 
+    return title; 
+  } 
   
-  public void setDepartment(String department)
-  {
-    this.department = department;
-  }
+  public void setDepartment(String department) 
+  { 
+    this.department = department; 
+  } 
   
-  public String getDepartment()
-  {
-    return department;
-  }
+  public String getDepartment() 
+  { 
+    return department; 
+  } 
   
-  public void display()
+  public void display() 
+  { 
+    //code  
+  } 
+  
+  public String toString() 
+  { 
+    //code
+    return null;
+  } 
+  public void displayTeaschingAssignments()
   {
    //code 
   }
-  
-  public String toString()
+  public void agreeToTeach()
   {
-    //code
+   //code
+   //find section in list of sections and assign to variable 
   }
-}
+} 
