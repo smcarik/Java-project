@@ -1,1 +1,35 @@
-
+import java.util.*;
+public class Student
+{
+  String major;
+  String degree;
+  //possibly an String or an Object variable, unsure
+  Object transcript;
+  
+  ArrayList attends = new ArrayList();
+  
+  public void setMajor(String major)
+  {
+   major=major; 
+  }
+  public String getMajor()
+  {
+   return major; 
+  }
+  public void setDegree(String degree)
+  {
+   degree = degree; 
+  }
+  public String getDegree()
+  {
+   return degree; 
+  }
+  public void setTranscript(Object transcript)
+  {
+   transcript = transcript; 
+  }
+  public Object getTranscript()
+  {
+   return transcript;
+  }
+}
