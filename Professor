@@ -3,10 +3,9 @@ import java.util.*;
 public class Professor 
 { 
   private String title, department;
-  public void section()
-  {
-  ArrayList<String> section = new ArrayList<String>();
-  }
+  
+  ArrayList<String> teaches = new ArrayList<String>();
+  
   public void setTitle(String title) 
   { 
     this.title = title; 
@@ -41,9 +40,10 @@ public class Professor
   {
    //code 
   }
-  public void agreeToTeach()
+  public void agreeToTeach(String section)
   {
    //code
-   //find section in list of sections and assign to variable 
+    String teachSection = section;
+    teaches.add(teachSection);
   }
 } 
