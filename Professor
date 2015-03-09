@@ -3,8 +3,10 @@ import java.util.*;
 public class Professor 
 { 
   private String title, department;
+  public void section()
+  {
   ArrayList<String> section = new ArrayList<String>();
-  
+  }
   public void setTitle(String title) 
   { 
     this.title = title; 
