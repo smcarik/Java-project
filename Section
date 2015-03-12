@@ -1,6 +1,7 @@
 public class Section
 {
-  private String sectionNo, dayOfWeek, timeOfDay, room, representedCourse, instructor;
+  private String sectionNo, dayOfWeek, timeOfDay, room, representedCourse, instructor, offeredIn, 
+    enrolledStudents;
   private int seatingCapacity;
   
   public void setSectionNo(String sectionNo)
@@ -33,9 +34,9 @@ public class Section
     return timeOfDay;
   }
   
-  public void setInstructor(Professor)
+  public void setInstructor(Professor professor)
   {
-    
+    this.instructor = professor;
   }
   
   public String getInstructor()
@@ -43,9 +44,9 @@ public class Section
     return instructor;
   }
   
-  public void setRepresentedCourse(Course)
+  public void setRepresentedCourse(Course course)
   {
-    
+    this.representedCourse = course;
   }
   
   public String getRepresentedCourse()
@@ -60,7 +61,7 @@ public class Section
   
   public String getRoom()
   {
-     return room;
+    return room;
   }
   
   public void setSeatingCapacity(int capacity)
@@ -73,14 +74,14 @@ public class Section
     return seatingCapacity;
   }
   
-  public void setOfferedIn(ScheduleOfClasses)
+  public void setOfferedIn(ScheduleOfClasses scheduleOfClasses)
   {
-    
+    this.offeredIn = scheduleOfClasses;
   }
   
   public String getOfferedIn()
   {
-    return "Something";
+    return scheduleOfClasses;
   }
   
   public String toString()
@@ -90,17 +91,24 @@ public class Section
   
   public String getFullSectionNo()
   {
-    return "Something";
+    return Course.courseNo() + sectionNo;
   }
   
-  public void enroll()
+  public void enroll(Student student)
   {
-    
+    this.enrolledStudents = student;
   }
   
   public Boolean confirmSeatAvailibility()
   {
-    
+    if(CourseCatalog.isEmpty() == false)
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
   }
   
   public int getTotalEnrollment()
@@ -123,13 +131,17 @@ public class Section
     return "Something";
   }
   
-  public void postGrade(Student, grade)
+  public void postGrade(Student student, String grade)
   {
-    
+    TranscriptEntry.getGrade() = grade;
   }
   
-  public Boolean isSectionOf()
+  public Boolean isSectionOf(Course course)
   {
-    
+    boolean found = true;
+    if(found == true)
+    {
+      
+    }
   }
 }
