@@ -2,13 +2,20 @@ public class Person
 {
  String name;
  String ssn;
+ 
+ public Person()
+ {
+   name="empty";
+   ssn = "empty";
+ }
+ 
  public void setName(String name)
  {
-  this.name=name; 
+  name=name; 
  }
  public void setSsn(String ssn)
  {
-   this.ssn=ssn;
+   ssn=ssn;
  }
  public String getName()
  {
