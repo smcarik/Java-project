@@ -10,7 +10,7 @@ public class Student
   
   public void setMajor(String major)
   {
-   major=major; 
+   this.major=major; 
   }
   public String getMajor()
   {
@@ -18,7 +18,7 @@ public class Student
   }
   public void setDegree(String degree)
   {
-   degree = degree; 
+   this.degree = degree; 
   }
   public String getDegree()
   {
@@ -26,7 +26,7 @@ public class Student
   }
   public void setTranscript(Object transcript)
   {
-   transcript = transcript; 
+   this.transcript = transcript; 
   }
   public Object getTranscript()
   {
