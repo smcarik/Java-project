@@ -1,1 +1,24 @@
-
+public class Faculty extends Professor
+{
+  private Professor professor;
+  
+  public String display
+  {
+    
+  }
+  
+  public String addProfessor()
+  {
+    professor = new Professor();
+  }
+  
+  public String findProfessor(String ssn);
+  {
+    if (ssn == Professor.())
+    {return Professor.();}
+  }
+  
+  public Boolean isEmpty()
+  {
+    
+  }
