@@ -4,11 +4,11 @@ public class Person
  String ssn;
  public void setName(String name)
  {
-  name=name; 
+  this.name=name; 
  }
  public void setSsn(String ssn)
  {
-   ssn=ssn;
+   this.ssn=ssn;
  }
  public String getName()
  {
