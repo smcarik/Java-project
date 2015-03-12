@@ -1,1 +1,39 @@
-
+public class ScheduleOfClasses
+{
+  private String semester;
+  
+  public void setSemester(String semester)
+  {
+    this.semester = semester;
+  }
+  
+  public String getSemester()
+  {
+    return semester;
+  }
+  
+  public String getSectionsOffered()
+  {
+    
+  }
+  
+  public String display()
+  {
+    return "something";
+  }
+  
+  public void addSection()
+  {
+    
+  }
+  
+  public String findSection()
+  {
+    
+  }
+  
+  public boolean isEmpty()
+  {
+    
+  }
+}
