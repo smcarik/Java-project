@@ -1,1 +1,135 @@
-
+public class Section
+{
+  private String sectionNo, dayOfWeek, timeOfDay, room, representedCourse, instructor;
+  private int seatingCapacity;
+  
+  public void setSectionNo(String sectionNo)
+  {
+    this.sectionNo = sectionNo;
+  }
+  
+  public String getSectionNo()
+  {
+    return sectionNo;
+  }
+  
+  public void setDayOfWeek(String day)
+  {
+    this.dayOfWeek = day;
+  }
+  
+  public String getDayOfWeek()
+  {
+    return dayOfWeek;
+  }
+  
+  public void setTimeOfDay(String time)
+  {
+    this.timeOfDay = time;
+  }
+  
+  public String getTimeOfDay()
+  {
+    return timeOfDay;
+  }
+  
+  public void setInstructor(Professor)
+  {
+    
+  }
+  
+  public String getInstructor()
+  {
+    return instructor;
+  }
+  
+  public void setRepresentedCourse(Course)
+  {
+    
+  }
+  
+  public String getRepresentedCourse()
+  {
+    return representedCourse;
+  }
+  
+  public void setRoom(String room)
+  {
+    this.room = room;
+  }
+  
+  public String getRoom()
+  {
+     return room;
+  }
+  
+  public void setSeatingCapacity(int capacity)
+  {
+    this.seatingCapacity = capacity;
+  }
+  
+  public int getSeatingCapacity()
+  {
+    return seatingCapacity;
+  }
+  
+  public void setOfferedIn(ScheduleOfClasses)
+  {
+    
+  }
+  
+  public String getOfferedIn()
+  {
+    return "Something";
+  }
+  
+  public String toString()
+  {
+    return "Something";
+  }
+  
+  public String getFullSectionNo()
+  {
+    return "Something";
+  }
+  
+  public void enroll()
+  {
+    
+  }
+  
+  public Boolean confirmSeatAvailibility()
+  {
+    
+  }
+  
+  public int getTotalEnrollment()
+  {
+    return "Something";
+  }
+  
+  public String display()
+  {
+    return "something";
+  }
+  
+  public String displayStudentRoster()
+  {
+    return "Someting";
+  }
+  
+  public String getGrade()
+  {
+    return "Something";
+  }
+  
+  public void postGrade(Student, grade)
+  {
+    
+  }
+  
+  public Boolean isSectionOf()
+  {
+    
+  }
+}
