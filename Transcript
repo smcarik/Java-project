@@ -1,1 +1,14 @@
+import java.util.*;
 
+public class Transcript()
+{
+  private Student studentOwner;
+  
+  ArrayList<String> transcriptEntries = new ArrayList<String>();
+  
+  public void setStudentOwner(Student student)
+  {
+    studentOwner = student;
+  }
+  
+  
