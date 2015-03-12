@@ -2,7 +2,7 @@ public class Faculty extends Professor
 {
   private Professor professor;
   
-  public String display
+  public String display()
   {
     
   }
