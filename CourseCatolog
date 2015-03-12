@@ -1,1 +1,25 @@
+public class CourseCatalog extends Course
+{
+  private Course course;
+  
+  public String display()
+  {
+    
+  }
+  
+  public String addCourse()
+  {
+    course = new Course();
+  }
+  
+  public String findCourse(String courseNo)
+  {
+    if (courseNo == Course.getCourseNo())
+    {return Course.getCourseName();}
+  }
+  
+  public boolean isEmpty()
+  {
 
+  }
+}
