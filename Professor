@@ -1,11 +1,16 @@
 import java.util.*;
 
-public class Professor 
+public class Professor extends Person
 { 
   private String title, department;
-  
+  Private Person professor;
   ArrayList<String> teaches = new ArrayList<String>();
-  
+  public Professor()
+{
+professor = new Person();
+title = "UNASSIGNED";
+department = "UNASSIGNED";
+}
   public void setTitle(String title) 
   { 
     this.title = title; 
