@@ -1,24 +1,25 @@
 public class Faculty
 {
-  private Professor professor;
   
-  public String display()
+  public void display()
   {
     
   }
   
-  public String addProfessor()
+  public void addProfessor(Professor p)
   {
-    professor = new Professor();
+    
+    //add it to the map then
   }
   
-  public String findProfessor(String ssn);
+  public Object findProfessor(String ssn)
   {
-    if (ssn == Professor.())
-    {return Professor.();}
+    /*search the map and for the ssn then return the professor*/
+    return null;
   }
   
   public Boolean isEmpty()
   {
-    
+    return false;
   }
+}
