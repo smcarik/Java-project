@@ -1,8 +1,17 @@
+import java.util.*;
 public class Course
 {
   private double credits;
-  private String courseName, courseNo;
-  
+  private String courseName;
+  private String courseNo;
+  ArrayList<Course> prerequisites = new ArrayList<Course>();
+  ArrayList<Section> offeredAsSection = new ArrayList<Section>();
+  public Course()
+  {
+    credits=0.0;
+    courseName=null;
+    courseNo=null;
+  }
   public void setCourseNo(String courseNo)
   {
     this.courseNo = courseNo;
@@ -33,9 +42,9 @@ public class Course
     return credits;
   }
   
-  public String display()
+  public void display()
   {
-    return "whatever is asked";
+    
   }
   
   public String toString()
@@ -50,12 +59,12 @@ public class Course
   
   public Boolean hasPrerequisites()
   {
-    
+    return false;
   }
   
-  public String getPrerequisites()
+  public ArrayList getPrerequisites()
   {
-    return prerequisities;
+    return prerequisites;
   }
   
   public void scheduleSection()
