@@ -1,8 +1,11 @@
 public class Section
 {
-  private String sectionNo, dayOfWeek, timeOfDay, room, representedCourse, instructor, offeredIn, 
-    enrolledStudents;
+  private String sectionNo, dayOfWeek, timeOfDay, room;
   private int seatingCapacity;
+  private Professor instructor;
+  private Course representedCourse;
+  private ScheduleOfClasses offeredIn;
+  private Student enrolledStudents;
   
   public void setSectionNo(String sectionNo)
   {
@@ -39,7 +42,7 @@ public class Section
     this.instructor = professor;
   }
   
-  public String getInstructor()
+  public Professor getInstructor()
   {
     return instructor;
   }
@@ -49,7 +52,7 @@ public class Section
     this.representedCourse = course;
   }
   
-  public String getRepresentedCourse()
+  public Course getRepresentedCourse()
   {
     return representedCourse;
   }
@@ -79,9 +82,9 @@ public class Section
     this.offeredIn = scheduleOfClasses;
   }
   
-  public String getOfferedIn()
+  public ScheduleOfClasses getOfferedIn()
   {
-    return scheduleOfClasses;
+    return offeredIn;
   }
   
   public String toString()
@@ -91,7 +94,7 @@ public class Section
   
   public String getFullSectionNo()
   {
-    return Course.courseNo() + sectionNo;
+    return representedCourse.getCourseNo() + sectionNo;
   }
   
   public void enroll(Student student)
@@ -101,19 +104,18 @@ public class Section
   
   public Boolean confirmSeatAvailibility()
   {
-    if(CourseCatalog.isEmpty() == false)
-    {
-      return false;
-    }
-    else
-    {
-      return true;
-    }
+    /*create enrolledStudents map
+     * find size of map
+     * Then if size of map is less then seatingCapacity
+     * return there are seats are available
+     * else return that there are no seats available
+     */
+    return false;
   }
   
   public int getTotalEnrollment()
   {
-    return "Something";
+    return 0;
   }
   
   public String display()
@@ -133,15 +135,12 @@ public class Section
   
   public void postGrade(Student student, String grade)
   {
-    TranscriptEntry.getGrade() = grade;
+    //after we create the map then we can finish this one
   }
   
   public Boolean isSectionOf(Course course)
   {
-    boolean found = true;
-    if(found == true)
-    {
-      
-    }
+    //code
+    return false;
   }
 }
