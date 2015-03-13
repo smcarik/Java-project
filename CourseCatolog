@@ -1,4 +1,4 @@
-public class CourseCatalog extends Course
+public class CourseCatalog
 {
   private Course course;
   
