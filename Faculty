@@ -1,4 +1,4 @@
-public class Faculty extends Professor
+public class Faculty
 {
   private Professor professor;
   
