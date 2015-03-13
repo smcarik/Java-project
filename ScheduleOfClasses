@@ -1,6 +1,8 @@
+import java.util.*;
 public class ScheduleOfClasses
 {
   private String semester;
+  private HashMap<String, Section> sectionsOffered = new HashMap<String, Section>();
   
   public void setSemester(String semester)
   {
@@ -12,9 +14,9 @@ public class ScheduleOfClasses
     return semester;
   }
   
-  public String getSectionsOffered()
+  public Map getSectionsOffered()
   {
-    
+    return sectionsOffered;
   }
   
   public String display()
@@ -29,11 +31,18 @@ public class ScheduleOfClasses
   
   public String findSection()
   {
-    
+    return null;
   }
   
   public boolean isEmpty()
   {
-    
+    if(sectionsOffered.isEmpty()==true)
+    {
+     return true; 
+    }
+    else
+    {
+     return false; 
+    }
   }
 }
