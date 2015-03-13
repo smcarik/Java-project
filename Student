@@ -51,7 +51,7 @@ public class Student extends Person
   }
   public String getEnrolledSections()
   {
-    transcript.display();
+    return null;
   }
 
 }
