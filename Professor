@@ -3,7 +3,7 @@ import java.util.*;
 public class Professor extends Person
 { 
   private String title, department;
-  Private Person professor;
+  private Person professor;
   ArrayList<String> teaches = new ArrayList<String>();
   public Professor()
 {
