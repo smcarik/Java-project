@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Transcript()
+public class Transcript
 {
   private Student studentOwner;
   
@@ -10,5 +10,4 @@ public class Transcript()
   {
     studentOwner = student;
   }
-  
-  
+}
