@@ -1,4 +1,4 @@
-/**
+**
  * CourseCatalog extends course.
  * This class adds new courses, finds a course given a course number, along with checking to see if a class is empty 
  */
@@ -13,7 +13,7 @@ public class CourseCatalog extends Course
   /**
    * displays the info about the course you are looking up
    */
-  public String display()
+  public void display()
   {
     
   }
@@ -21,9 +21,9 @@ public class CourseCatalog extends Course
   /**
    * This adds a new course, calling on the course class
    */
-  public String addCourse()
+  public void addCourse()
   {
-    course = new Course();
+    
   }
   
   /**
@@ -34,8 +34,7 @@ public class CourseCatalog extends Course
    */
   public String findCourse(String courseNo)
   {
-    if (courseNo == Course.getCourseNo())
-    {return Course.getCourseName();}
+    return null;
   }
   
   /**
