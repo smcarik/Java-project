@@ -1,23 +1,39 @@
-public class Faculty
+/**
+ * This class extends Professor.
+ * This class adds and finds a professor, and makes sure the position is open
+ */
+public class Faculty extends Professor
 {
+  private Professor professor;
   
-  public void display()
+  /**
+   * This method displays any info about a professor
+   */
+  public String display()
   {
     
   }
-  
-  public void addProfessor(Professor p)
+  /**
+   * this method adds a new professor to the list of professors
+   */
+  public String addProfessor()
   {
-    
-    //add it to the map then
+    professor = new Professor();
   }
   
-  public Object findProfessor(String ssn)
+  /**
+   * Given an ssn, this method checks for a professor and finds one
+   * @param ssn
+   */
+  public String findProfessor(String ssn);
   {
-    /*search the map and for the ssn then return the professor*/
-    return null;
+    if (ssn == Professor())
+    {return Professor();}
   }
   
+  /**
+   * This method checks to see if the professor is empty, as in number of classes they teach
+   */
   public Boolean isEmpty()
   {
     return false;
