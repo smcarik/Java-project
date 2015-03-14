@@ -1,3 +1,6 @@
+/**
+ * sets the enrollment status of students
+ **/
 public enum EnrollmentStatus
 {
   
