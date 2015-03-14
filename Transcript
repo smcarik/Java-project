@@ -1,13 +1,29 @@
 import java.util.*;
-
+/**
+ * class transcript makes a transcript for a student
+ */
 public class Transcript
 {
+  /**
+   * declared variable studentOwner
+   */
   private Student studentOwner;
   
   ArrayList<String> transcriptEntries = new ArrayList<String>();
-  
+  /**
+   * gives a student their transcript
+   * @param student
+   */
   public void setStudentOwner(Student student)
   {
     studentOwner = student;
+  }
+  /**
+   * returns the student of a certain transcript
+   * @return studentOwner
+   */
+  public String getStudentOwner()
+  {
+    return studentOwner;
   }
 }
