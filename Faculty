@@ -9,26 +9,25 @@ public class Faculty extends Professor
   /**
    * This method displays any info about a professor
    */
-  public String display()
+  public void display()
   {
     
   }
   /**
    * this method adds a new professor to the list of professors
    */
-  public String addProfessor()
+  public void addProfessor()
   {
-    professor = new Professor();
+    
   }
   
   /**
    * Given an ssn, this method checks for a professor and finds one
    * @param ssn
    */
-  public String findProfessor(String ssn);
+  public String findProfessor(String ssn)
   {
-    if (ssn == Professor())
-    {return Professor();}
+    return null;
   }
   
   /**
