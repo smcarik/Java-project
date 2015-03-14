@@ -81,7 +81,7 @@ public class Student extends Person
   /**
    * return the CourseSchedule of the student
    */
-  public String displayCourseSchedule()
+  public void displayCourseSchedule()
   {
     //Code
   }
