@@ -1,28 +1,46 @@
+/**
+ * CourseCatalog extends course.
+ * This class adds new courses, finds a course given a course number, along with checking to see if a class is empty 
+ */
+
 import java.util.*;
+
 public class CourseCatalog extends Course
 {
   private Course course;
   private HashMap<String, Course> courses = new HashMap<String, Course>();
-    
-  public void display()
+  
+  /**
+   * displays the info about the course you are looking up
+   */
+  public String display()
   {
-   
+    
   }
   
-  public void addCourse()
+  /**
+   * This adds a new course, calling on the course class
+   */
+  public String addCourse()
   {
     course = new Course();
   }
   
-  public Course findCourse(String courseNo)
+  /**
+   * This method takes a parameter courseNo and if the course number entered is equal to the Courses course number,
+   * then it returns the course name
+   * @param courseNo
+   * @return courseName
+   */
+  public String findCourse(String courseNo)
   {
-    /*Search the map for the key to equal courseNo
-     * then if it does return the course name
-     */
-    return null;
-      
+    if (courseNo == Course.getCourseNo())
+    {return Course.getCourseName();}
   }
   
+  /**
+   * This method checks to see if the class is empty or not
+   */
   public boolean isEmpty()
   {
     return false;
