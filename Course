@@ -1,3 +1,7 @@
+/**
+ * This class sets the course number, name, and number of credits, noting if the course needs prerequisites
+ * and adds the section.
+ */
 import java.util.*;
 public class Course
 {
@@ -19,6 +23,10 @@ public class Course
     this.courseNo = courseNo;
   }
   
+   /**
+   * returns the course name
+   * @return courseName
+   */
   public String getCourseNo()
   {
     return courseNo;
@@ -30,6 +38,10 @@ public class Course
     this.courseName = courseName;
   }
   
+  /**
+   * returns the course name
+   * @return courseName
+   */
   public String getCourseName()
   {
     return courseName;
@@ -41,41 +53,69 @@ public class Course
     this.credits = credits;
   }
   
+  /**
+   * returns the number of credits
+   * @return credits
+   */
   public double getCredits()
   {
     return credits;
   }
   
+  /**
+   * displays information about the class
+   * @ return something
+   */
   public void display()
   {
     
   }
   
+  /**
+   * returns the string form of all the info about the classes
+   * @return something 
+   */
   public String toString()
   {
     return "something";
   }
   
+  /**
+   * this method adds the prerequisites of the class, if there are any
+   */
   public void addPrerequisite()
   {
     
   }
   
+  /**
+   * returns true is the class has any prerequsites that need to be filled
+   */
   public Boolean hasPrerequisites()
   {
     return false;
   }
   
+  /**
+   * gets the prerequsites required to enrol for the class
+   * @return prerequisites
+   */
   public ArrayList getPrerequisites()
   {
     return prerequisites;
   }
   
+  /**
+   * schedules the section by adding it to the schedule
+   */
   public void scheduleSection()
   {
     
   }
   
+  /**
+   * adds the section to the class schedule
+   */
   public void addSection()
   {
     
