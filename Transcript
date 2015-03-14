@@ -22,8 +22,17 @@ public class Transcript
    * returns the student of a certain transcript
    * @return studentOwner
    */
-  public String getStudentOwner()
+  public Student getStudentOwner()
   {
     return studentOwner;
+  }
+  /**
+   * returns whether or not the course was completed
+   * @param course the course to decide if completed
+   * @return return if it was completed
+   **/
+  public Boolean verifyCompletion(Course course)
+  {
+   return false; 
   }
 }
