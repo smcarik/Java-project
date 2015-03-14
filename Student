@@ -1,54 +1,100 @@
 import java.util.*;
+/**
+ * class Student extends class Person
+ * Makes a new student object and is able to set and get their major, degree, transcript, as well as check enrolled sections
+ */
 public class Student extends Person
 {
+  /**
+   * declared variables, major, degree, transcript
+   * 
+   */
   String major;
   String degree;
   //possibly an String or an Object variable, unsure
   Object transcript;
   
   ArrayList attends = new ArrayList();
-  
+  /**
+   * sets the major of the student object
+   * @param major
+   */
   public void setMajor(String major)
   {
    this.major=major; 
   }
+  /**
+   * returns the major of the student
+   * @return major
+   */
   public String getMajor()
   {
    return major; 
   }
+  /**
+   * sets the degree of the student
+   * @param degree
+   */
   public void setDegree(String degree)
   {
    this.degree = degree; 
   }
+  /**
+   * returns the degree of the student
+   * @return degree
+   */
   public String getDegree()
   {
    return degree; 
   }
+  /**
+   * sets the transcript of the student
+   * @param transcript
+   */
   public void setTranscript(Object transcript)
   {
    this.transcript = transcript; 
   }
+  /**
+   * returns the transcript of the student
+   * @return transcript
+   */
   public Object getTranscript()
   {
    return transcript;
   }
+  /**
+   * displays information about the student
+   */
   public void display()
   {
     //Code
   }
+  /**
+   * displays information about the student
+   */
   public String toString()
   {
     //Code
     return null;
   }
-  public void displayCourseSchedule()
+  /**
+   * return the CourseSchedule of the student
+   */
+  public String displayCourseSchedule()
   {
     //Code
   }
+  /**
+   * prints the transcript of the student
+   */
   public void printTranscript()
   {
     System.out.println("Transcript: "+transcript);
   }
+  /**
+   * returns all the sections the student is enrolled in
+   */
   public String getEnrolledSections()
   {
     return null;
