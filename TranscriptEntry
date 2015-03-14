@@ -1,43 +1,74 @@
+/**
+ * class TranscriptEntry sets and returns the grades and sections, for a certain student as well as making a transcript
+ */
 public class TranscriptEntry
 {
+  /**
+   * declares variables grade, student and transcript as string
+   * declares variable section as int
+   */
   private String grade, student, transcript;
   private int section;
-  
+  /**
+   * sets the student of the transcript
+   * @param student
+   */
   public void setStudent(String student)
   {
     this.student = student;
   }
-  
+  /**
+   * returns the student of a certain transcript
+   * @return student
+   */
   public String getStudent()
   {
     return student;
   }
-  
+  /**
+   * sets the course section taken on the transcript
+   * @param section
+   */
   public void setSection(int section)
   {
     this.section = section;
   }
-  
+  /**
+   * returns the course sections taken that are on the transcript
+   * @return section
+   */
   public int getSection()
   {
     return section;
   }
-  
+  /**
+   * sets the grade of sections of the transcript
+   * @param grade
+   */
   public void setGrade(String grade)
   {
     this.grade = grade;
   }
-  
+  /**
+   * returns the grade of a section
+   * @return grade
+   */
   public String getGrade()
   {
     return grade;
   }
-  
+  /**
+   * sets the transcript
+   * @param transcript
+   */
   public void setTranscript(String transcript)
   {
     this.transcript = transcript;
   }
-  
+  /**
+   * returns the current transcript
+   * @return transcript
+   */
   public String getTranscript()
   {
     return transcript;
