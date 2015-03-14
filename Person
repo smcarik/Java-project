@@ -1,3 +1,6 @@
+/**
+ * This class sets and gets both the name and the ssn of a person, and then displays that info
+ */
 public class Person
 {
  String name;
@@ -5,30 +8,58 @@ public class Person
  
  public Person()
  {
-   name="empty";
+   name = "empty";
    ssn = "empty";
  }
  
+ /**
+  * This method sets the name of a person to a variable
+  * @param name
+  */
  public void setName(String name)
  {
   name=name; 
  }
+ 
+ /**
+  * this method sets the ssn of a person
+  * @param ssn
+  */
  public void setSsn(String ssn)
  {
    ssn=ssn;
  }
+ 
+ /**
+  * this method gets the name of a person and returns it
+  * @return name
+  */
  public String getName()
  {
   return name; 
  }
+ 
+ /**
+  * this method gets the ssn of a person and returns it
+  * @return ssn
+  */
  public String getSsn()
  {
   return ssn; 
  }
+ 
+ /**
+  * this method displays info about the person
+  */
  public void display()
  {
    
  }
+ 
+ /**
+  * This returns the name of the person along with the ssn of that person
+  * @return name, ssn
+  */
  public String toString()
  {
    return "Name: " + name + " SSN: " + ssn;
