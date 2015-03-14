@@ -1,107 +1,173 @@
+/**
+ * this is a class that creates sections
+ **/
 public class Section
 {
+  /**
+   * declared variables used within this class
+   **/
   private String sectionNo, dayOfWeek, timeOfDay, room;
   private int seatingCapacity;
   private Professor instructor;
   private Course representedCourse;
   private ScheduleOfClasses offeredIn;
   private Student enrolledStudents;
-  
+  /**
+   * sets the number that represents the section
+   *@param sectionNo is the number assigned to the section
+   **/
   public void setSectionNo(String sectionNo)
   {
     this.sectionNo = sectionNo;
   }
-  
+  /**
+   * returns the sectionNo
+   * @return sectionNo 
+   **/
   public String getSectionNo()
   {
     return sectionNo;
   }
-  
+  /**
+   * sets the days of the week the class will be held
+   * @param day  the day the class will be held
+   **/
   public void setDayOfWeek(String day)
   {
     this.dayOfWeek = day;
   }
-  
+  /**
+   * gets the days of the week the class is held
+   * @return dayOfWeek returns the day of the week the class will be held
+   **/
   public String getDayOfWeek()
   {
     return dayOfWeek;
   }
-  
+  /**
+   * sets the time of day the class will be held
+   * @param time the time of the class on days held
+   **/
   public void setTimeOfDay(String time)
   {
     this.timeOfDay = time;
   }
-  
+  /**
+   * gets the time of day the class will be held
+   * @return timeOfDay  returns the time of day the class is held
+   **/
   public String getTimeOfDay()
   {
     return timeOfDay;
   }
-  
+  /**
+   * sets the instructor of the class
+   * @param professor the professor teaching the sections
+   **/
   public void setInstructor(Professor professor)
   {
     this.instructor = professor;
   }
-  
+  /**
+   * gets the name of the instructor teaching the section
+   * @return instructor returns the instructor teaching
+   **/
   public Professor getInstructor()
   {
     return instructor;
   }
-  
+  /**
+   * sets the course that the section is representing
+   * @param course the course the section represents
+   **/
   public void setRepresentedCourse(Course course)
   {
     this.representedCourse = course;
   }
-  
+  /**
+   * gets the course represented by the section
+   * @return representedCourse returns the course represented
+   **/
   public Course getRepresentedCourse()
   {
     return representedCourse;
   }
-  
+  /**
+   * sets the room the sections will be held in
+   * @param room the room number the room is held in
+   **/
   public void setRoom(String room)
   {
     this.room = room;
   }
-  
+  /**
+   * gets the room number the class is held in
+   * @return room the number the class is held in
+   **/
   public String getRoom()
   {
     return room;
   }
-  
+  /**
+   * sets the number of students allowed in the class
+   * @param capacity number of students
+   **/
   public void setSeatingCapacity(int capacity)
   {
     this.seatingCapacity = capacity;
   }
-  
+  /**
+   * gets the number of seats available in the class
+   * @return seatingCapacity returns number of students allowed in the class
+   **/
   public int getSeatingCapacity()
   {
     return seatingCapacity;
   }
-  
+  /**
+   * sets what schedule of classes the course is offered in
+   * @param scheduleOfClasses the schedule of the class
+   **/
   public void setOfferedIn(ScheduleOfClasses scheduleOfClasses)
   {
     this.offeredIn = scheduleOfClasses;
   }
-  
+  /**
+   * gets what schedule the class is offered in
+   * @return offeredIn returns what its offered in
+   **/
   public ScheduleOfClasses getOfferedIn()
   {
     return offeredIn;
   }
-  
+  /**
+   * turns the information into a string
+   * @return returns what the string will be
+   **/
   public String toString()
   {
     return "Something";
   }
-  
+  /**
+   * gets the section number and course number
+   * @return returns a string with the course number and the section number
+   **/
   public String getFullSectionNo()
   {
     return representedCourse.getCourseNo() + sectionNo;
   }
-  
+  /**
+   * adds student to list of enrolled students
+   * @param student name of student
+   **/
   public void enroll(Student student)
   {
     this.enrolledStudents = student;
   }
-  
+  /**
+   * checks if there are seats available
+   * @return returns if there are seats available
+   **/
   public Boolean confirmSeatAvailibility()
   {
     /*create enrolledStudents map
@@ -112,32 +178,51 @@ public class Section
      */
     return false;
   }
-  
+  /**
+   * gets number of enrolled students
+   * @return number of enrolled students
+   **/
   public int getTotalEnrollment()
   {
     return 0;
   }
-  
+  /**
+   * displays the information
+   * @return
+   **/
   public String display()
   {
     return "something";
   }
-  
+  /**
+   * displays the roster of students
+   * @return roster
+   **/
   public String displayStudentRoster()
   {
     return "Someting";
   }
-  
+  /**
+   * gets the grade
+   * @return students grade
+   **/
   public String getGrade()
   {
     return "Something";
   }
-  
+  /**
+   * puts students grade in the map
+   * @param student student
+   * @param grade students grade
+   **/
   public void postGrade(Student student, String grade)
   {
     //after we create the map then we can finish this one
   }
-  
+  /**
+   * checks what course this is a section of
+   * @param course name of course
+   **/
   public Boolean isSectionOf(Course course)
   {
     //code
