@@ -12,6 +12,8 @@ public class Course
     courseName=null;
     courseNo=null;
   }
+  
+  //@param courseNo enter the course number that you are setting
   public void setCourseNo(String courseNo)
   {
     this.courseNo = courseNo;
@@ -22,6 +24,7 @@ public class Course
     return courseNo;
   }
   
+  //@param courseName enter the name of the course you are setting
   public void setCourseName(String courseName)
   {
     this.courseName = courseName;
@@ -32,6 +35,7 @@ public class Course
     return courseName;
   }
   
+  //@param credits enter the number of credits the course is worth
   public void setCredits(double credits)
   {
     this.credits = credits;
