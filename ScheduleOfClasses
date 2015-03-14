@@ -1,39 +1,63 @@
 import java.util.*;
+/**
+ * class ScheduleOfClasses
+ * sets and returns semester of class schedule as well as finding or adding a section to the class schedule
+ */
 public class ScheduleOfClasses
 {
+  /**
+   * declared variable semester
+   */
   private String semester;
   private HashMap<String, Section> sectionsOffered = new HashMap<String, Section>();
-  
+  /**
+   * sets the semester of a class schedule
+   * @param semester
+   */
   public void setSemester(String semester)
   {
     this.semester = semester;
   }
-  
+  /**
+   * gets the semester of a class schedule
+   * @return semester
+   */
   public String getSemester()
   {
     return semester;
   }
-  
+  /**
+   * returns the sections offered of a course
+   * @return sectionsOffered
+   */
   public Map getSectionsOffered()
   {
     return sectionsOffered;
   }
-  
+  /**
+   * displays information about the class schedule
+   */
   public String display()
   {
     return "something";
   }
-  
+  /**
+   * adds a course section to the class schedule
+   */
   public void addSection()
   {
     
   }
-  
+  /**
+   * finds the sections of a certain course
+   */
   public String findSection()
   {
     return null;
   }
-  
+  /**
+   * this method checks to see if the class schedule is empty or not
+   */
   public boolean isEmpty()
   {
     if(sectionsOffered.isEmpty()==true)
