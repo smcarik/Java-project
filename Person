@@ -6,7 +6,7 @@ public class Person
  String name;
  String ssn;
  
- public Person()
+ public Person(String name, String ssn)
  {
    name = "empty";
    ssn = "empty";
