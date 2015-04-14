@@ -2,14 +2,13 @@ import java.util.*;
 /**
  * class transcript makes a transcript for a student
  */
-public class Transcript
+public class Transcript extends TranscriptEntry
 {
   /**
    * declared variable studentOwner
    */
   private Student studentOwner;
-  
-  ArrayList<String> transcriptEntries = new ArrayList<String>();
+  private ArrayList<TranscriptEntry> transcriptEntries = new ArrayList<TranscriptEntry>();
   /**
    * gives a student their transcript
    * @param student
@@ -29,10 +28,29 @@ public class Transcript
   /**
    * returns whether or not the course was completed
    * @param course the course to decide if completed
-   * @return return if it was completed
+   * @return return true if it was completed, otherwise false.
    **/
   public Boolean verifyCompletion(Course course)
   {
-   return false; 
+    if(transcriptEntries.contains(course)){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
+  
+  public void addTranscriptEntry(TranscriptEntry transcriptEntry)
+  {
+    transcriptEntries.add(transcriptEntry);
+  }
+  
+  public void display()
+  {
+    for(int i = 0;i<transcriptEntries.size();i++)
+    {
+      System.out.println(transcriptEntries.get(i));
+    }
+  }
+  
 }
