@@ -6,14 +6,17 @@ import java.util.*;
 
 public class Professor 
 { 
-  private String title, department;
-  private Person professor;
+  private String title, department,name,ssn;
   
-  ArrayList<String> teaches = new ArrayList<String>();
   
-  public Professor()
+  private ArrayList<String> teaches = new ArrayList<String>();
+  
+  public Professor(String title, String department, String name, String ssn)
   {
-    professor = new Person();
+    title = title;
+    department = department;
+    name = name;
+    ssn = ssn;
   }
   
   /**
@@ -56,7 +59,7 @@ public class Professor
    */
   public void display() 
   { 
-    //code  
+    //code display the information returned from the tostring method
   } 
   
   /**
@@ -66,7 +69,7 @@ public class Professor
   public String toString() 
   { 
     //code
-    return null;
+    return title + department + name + ssn + teaches;
   } 
   
   /**
@@ -74,7 +77,7 @@ public class Professor
    */
   public void displayTeaschingAssignments()
   {
-   //code 
+   //code---Read in assignments from .dat file then display on GUI/ for now print to system
   }
   
   /**
@@ -87,4 +90,8 @@ public class Professor
     String teachSection = section;
     teaches.add(teachSection);
   }
+  public String getName()
+ {
+  return name; 
+ }
 } 
