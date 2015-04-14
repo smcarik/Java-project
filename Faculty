@@ -1,9 +1,11 @@
+import java.util.*;
 /**
  * This class extends Professor.
  * This class adds and finds a professor, and makes sure the position is open
  */
-public class Faculty extends Professor
+public class Faculty
 {
+  private Map<String, Professor> professors = new HashMap<String, Professor>();
   private Professor professor;
   
   /**
@@ -11,14 +13,20 @@ public class Faculty extends Professor
    */
   public void display()
   {
-    
+    for(String ssn : professors.keySet())
+    {
+      professor = professors.get(ssn);
+      //this line may not work when testing.
+      String name = professor.toString();
+      System.out.println("key: " + ssn + " Professors: " + name);
+    }
   }
   /**
    * this method adds a new professor to the list of professors
    */
-  public void addProfessor()
+  public void addProfessor(String ssn, Professor proffesor)
   {
-    
+    professors.put(ssn,proffesor);
   }
   
   /**
@@ -27,7 +35,17 @@ public class Faculty extends Professor
    */
   public String findProfessor(String ssn)
   {
-    return null;
+    if(professors.containsKey(ssn))
+    {
+      professor = professors.get(ssn);
+      //this line may not work when testing.
+      String name = professor.toString();
+      return "The professor with the ssn: " + ssn + " is " + name;
+    }
+    else
+    {
+     return "There is no professor with that ssn in our system."; 
+    }
   }
   
   /**
@@ -35,6 +53,9 @@ public class Faculty extends Professor
    */
   public Boolean isEmpty()
   {
-    return false;
+    if(professors.isEmpty())
+      return true;
+    else
+      return false;
   }
 }
