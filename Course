@@ -13,8 +13,8 @@ public class Course
   public Course()
   {
     credits=0.0;
-    courseName=null;
-    courseNo=null;
+    courseName="null";
+    courseNo="null";
   }
   
   //@param courseNo enter the course number that you are setting
