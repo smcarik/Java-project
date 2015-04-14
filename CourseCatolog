@@ -1,4 +1,4 @@
-**
+/**
  * CourseCatalog extends course.
  * This class adds new courses, finds a course given a course number, along with checking to see if a class is empty 
  */
