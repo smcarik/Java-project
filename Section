@@ -163,7 +163,7 @@ public class Section
    **/
   public String toString()
   {
-    return "Something";
+    return sectionNo+dayOfWeek+timeOfDay+room+seatingCapacity+instructor+representedCourse+offeredIn;
   }
   /**
    * gets the section number and course number
@@ -171,7 +171,7 @@ public class Section
    **/
   public String getFullSectionNo()
   {
-    return representedCourse.getCourseNo() + sectionNo;
+    return representedCourse.getCourseNo() + "-" + sectionNo;
   }
   /**
    * adds student to list of enrolled students
@@ -179,7 +179,7 @@ public class Section
    **/
   public void enroll(Student student)
   {
-    
+    //code  uses enrollment status,  finish when enrollment status enum class finished.
   }
   /**
    * checks if there are seats available
@@ -193,7 +193,14 @@ public class Section
      * return there are seats are available
      * else return that there are no seats available
      */
+    if(enrolledStudents.size()<=seatingCapacity)
+    {
+     return true; 
+    }
+    else
+    {
     return false;
+    }
   }
   /**
    * gets number of enrolled students
@@ -201,23 +208,30 @@ public class Section
    **/
   public int getTotalEnrollment()
   {
-    return 0;
+    return enrolledStudents.size();
   }
   /**
    * displays the information
    * @return
    **/
-  public String display()
+  public void display()
   {
-    return "something";
+    //displays the information to GUI
+    //for now print to system
+    System.out.println(enrolledStudents);
+    System.out.println(assignedGrades);
+    //also print information acquired from toString method
   }
   /**
    * displays the roster of students
    * @return roster
    **/
-  public String displayStudentRoster()
+  public void displayStudentRoster()
   {
-    return "Someting";
+    for(String ssn : enrolledStudents.keySet())
+    {
+     System.out.println(enrolledStudents.get(ssn)); 
+    }
   }
   /**
    * gets the grade
@@ -225,7 +239,19 @@ public class Section
    **/
   public String getGrade()
   {
-    return "Something";
+    //run through the assignedGrades and find the student, and return their grade
+    
+    /*for(Student key : assignedGrades.keySet())
+    {
+     if(key.equals(Student.getName))
+     {
+      return assignedGrades.get(key); 
+     }
+     else
+       return "That person does not have a grade";
+    }
+    */
+    return null;
   }
   /**
    * puts students grade in the map
@@ -235,6 +261,8 @@ public class Section
   public void postGrade(Student student, String grade)
   {
     //after we create the map then we can finish this one
+    
+    // I dont know how to add the grade to the map, given that the value type is TranscriptEntry
   }
   /**
    * checks what course this is a section of
@@ -242,7 +270,13 @@ public class Section
    **/
   public Boolean isSectionOf(Course course)
   {
-    //code
+    if(course.offeredAsSection.contains(sectionNo))
+    {
+     return true; 
+    }
+    else
+    {
     return false;
+    }
   }
 }
