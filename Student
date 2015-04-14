@@ -9,13 +9,26 @@ public class Student extends Person
    * declared variables, major, degree, transcript
    * 
    */
+  String name;
+  String ssn;
   String major;
   String degree;
   //possibly an String or an Object variable, unsure
-  Object transcript;
+  Transcript transcript;
   
-  ArrayList attends = new ArrayList();
-  /**
+  ArrayList<Section> attends = new ArrayList<Section>();
+/*
+ * Creates a new student object
+ */
+  public Student(String name, String ssn, String major, String degree, Transcript transcript)
+  {
+    name = name;
+    ssn = ssn;
+    major = major;
+    degree = degree;
+    transcript = transcript;
+  }
+    /**
    * sets the major of the student object
    * @param major
    */
@@ -51,7 +64,7 @@ public class Student extends Person
    * sets the transcript of the student
    * @param transcript
    */
-  public void setTranscript(Object transcript)
+  public void setTranscript(Transcript transcript)
   {
    this.transcript = transcript; 
   }
@@ -59,7 +72,7 @@ public class Student extends Person
    * returns the transcript of the student
    * @return transcript
    */
-  public Object getTranscript()
+  public Transcript getTranscript()
   {
    return transcript;
   }
@@ -76,7 +89,7 @@ public class Student extends Person
   public String toString()
   {
     //Code
-    return null;
+    return ssn + name + degree + major + transcript;
   }
   /**
    * return the CourseSchedule of the student
@@ -84,11 +97,58 @@ public class Student extends Person
   public void displayCourseSchedule()
   {
     //Code
+    //run throught the attends list, and for each section in there print its time and day of week
   }
-  /**
-   * prints the transcript of the student
+  /*
+   * adds a section to list of sections
+   * @param sectionNo the number of the section
    */
-  public void printTranscript()
+  public void addSection(Section sectionNo)
+  {
+    if(sectionNo.confirmSeatAvailibility())
+    {
+      attends.add(sectionNo);
+    }
+    else
+    {
+      //put them into a waitlist 
+    }
+  }
+  /*
+   * removes a section form the list
+   * @param sectionNo the section to be removed
+   */
+  public void dropSection(Section sectionNo)
+  {
+    if(attends.contains(sectionNo))
+    {
+      attends.remove(sectionNo); 
+    }
+    else
+    {
+     System.out.println("You are not enrolled in that section"); 
+    }
+  }
+  public boolean isEnrolledIn(String sectionNo)
+  {
+   if(attends.contains(sectionNo))
+   {
+     return true;
+   }
+   else
+   {
+    return false; 
+   }
+  }
+  public boolean isCurrentlyEnrolledInSimilar(Section sectionNo)
+  {
+    // check for similar classes that start with the same course number and return true if one is found, or false if not found
+    return false; 
+  }
+    /**
+     * prints the transcript of the student
+     */
+    public void printTranscript()
   {
     System.out.println("Transcript: "+transcript);
   }
