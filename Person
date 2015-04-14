@@ -1,16 +1,10 @@
 /**
  * This class sets and gets both the name and the ssn of a person, and then displays that info
  */
-public class Person
+public abstract class Person
 {
  String name;
  String ssn;
- 
- public Person(String name, String ssn)
- {
-   name = "empty";
-   ssn = "empty";
- }
  
  /**
   * This method sets the name of a person to a variable
@@ -51,17 +45,11 @@ public class Person
  /**
   * this method displays info about the person
   */
- public void display()
- {
-   
- }
+ public abstract void display();
  
  /**
   * This returns the name of the person along with the ssn of that person
-  * @return name, ssn
+  * 
   */
- public String toString()
- {
-   return "Name: " + name + " SSN: " + ssn;
- }
+ public abstract String toString();
 }
