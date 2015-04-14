@@ -1,6 +1,7 @@
 /**
  * CourseCatalog extends course.
- * This class adds new courses, finds a course given a course number, along with checking to see if a class is empty 
+ * This class adds new courses, finds a course given a course number, along with 
+ * checking to see if a class is empty 
  */
 
 import java.util.*;
@@ -8,22 +9,27 @@ import java.util.*;
 public class CourseCatalog extends Course
 {
   private Course course;
-  private HashMap<String, Course> courses = new HashMap<String, Course>();
+  private HashMap<Integer, Course> courses = new HashMap<Integer, Course>();
   
   /**
    * displays the info about the course you are looking up
    */
   public void display()
   {
-    
+    for(Integer courseNo : courses.keySet()){
+      course = courses.get(courseNo);
+      String name = course.toString();
+      System.out.println("Course No: " + courseNo + " Course Name: " + name);
+    }
   }
   
   /**
    * This adds a new course, calling on the course class
    */
-  public void addCourse()
+  public void addCourse(Course section)
   {
-    
+    Random generator = new Random();
+    courses.put(generator.nextInt(100),section);
   }
   
   /**
@@ -32,9 +38,9 @@ public class CourseCatalog extends Course
    * @param courseNo
    * @return courseName
    */
-  public String findCourse(String courseNo)
+  public Course findCourse(Integer courseNo)
   {
-    return null;
+    return courses.get(courseNo);
   }
   
   /**
@@ -42,6 +48,11 @@ public class CourseCatalog extends Course
    */
   public boolean isEmpty()
   {
-    return false;
+    if(courses.isEmpty()){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 } 
