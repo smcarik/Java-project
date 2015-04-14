@@ -1,3 +1,4 @@
+import java.util.*;
 /**
  * this is a class that creates sections
  **/
@@ -11,11 +12,27 @@ public class Section
   private Professor instructor;
   private Course representedCourse;
   private ScheduleOfClasses offeredIn;
-  private Student enrolledStudents;
+  private HashMap<String, Student> enrolledStudents;
+  private HashMap<Student, TranscriptEntry> assignedGrades;
   /**
    * sets the number that represents the section
    *@param sectionNo is the number assigned to the section
    **/
+  public Section(String secNo, String dayOfWeek, String timeOfDay, String roomNum, int cap, Professor instructor,
+                 Course courseNo, ScheduleOfClasses offeredIn)
+  {
+    sectionNo=secNo;
+    dayOfWeek=dayOfWeek;
+    timeOfDay=timeOfDay;
+    room=roomNum;
+    seatingCapacity=cap;
+    instructor=instructor;
+    representedCourse=courseNo;
+    offeredIn=offeredIn;
+    enrolledStudents = new HashMap<String, Student>();
+    assignedGrades = new HashMap<Student, TranscriptEntry>();
+    
+  }
   public void setSectionNo(String sectionNo)
   {
     this.sectionNo = sectionNo;
@@ -162,7 +179,7 @@ public class Section
    **/
   public void enroll(Student student)
   {
-    this.enrolledStudents = student;
+    
   }
   /**
    * checks if there are seats available
