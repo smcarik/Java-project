@@ -7,13 +7,22 @@ public class TranscriptEntry
    * declares variables grade, student and transcript as string
    * declares variable section as int
    */
-  private String grade, student, transcript;
-  private int section;
+  private String grade;
+  private Student student;
+  private Transcript transcript;
+  private Section section;
+  public TranscriptEntry(String grade, Student student, Section section, Transcript transcript)
+  {
+   grade = grade;
+   student = student;
+   section = section;
+   transcript = transcript;
+  }
   /**
    * sets the student of the transcript
    * @param student
    */
-  public void setStudent(String student)
+  public void setStudent(Student student)
   {
     this.student = student;
   }
@@ -21,7 +30,7 @@ public class TranscriptEntry
    * returns the student of a certain transcript
    * @return student
    */
-  public String getStudent()
+  public Student getStudent()
   {
     return student;
   }
@@ -29,7 +38,7 @@ public class TranscriptEntry
    * sets the course section taken on the transcript
    * @param section
    */
-  public void setSection(int section)
+  public void setSection(Section section)
   {
     this.section = section;
   }
@@ -37,7 +46,7 @@ public class TranscriptEntry
    * returns the course sections taken that are on the transcript
    * @return section
    */
-  public int getSection()
+  public Section getSection()
   {
     return section;
   }
@@ -61,7 +70,7 @@ public class TranscriptEntry
    * sets the transcript
    * @param transcript
    */
-  public void setTranscript(String transcript)
+  public void setTranscript(Transcript transcript)
   {
     this.transcript = transcript;
   }
@@ -69,7 +78,7 @@ public class TranscriptEntry
    * returns the current transcript
    * @return transcript
    */
-  public String getTranscript()
+  public Transcript getTranscript()
   {
     return transcript;
   }
