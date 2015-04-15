@@ -5,7 +5,7 @@ import java.util.*;
  */
 public class Faculty
 {
-  private Map<String, Professor> professors = new HashMap<String, Professor>();
+  Map<String, Professor> professors = new HashMap<String, Professor>();
   private Professor professor;
   
   /**
