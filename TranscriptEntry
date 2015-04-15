@@ -1,7 +1,7 @@
 /**
  * class TranscriptEntry sets and returns the grades and sections, for a certain student as well as making a transcript
  */
-public class TranscriptEntry
+public class TranscriptEntry extends Transcript
 {
   /**
    * declares variables grade, student and transcript as string
@@ -107,5 +107,5 @@ public class TranscriptEntry
     {
       return false;
     }
-}
+  }
 }
