@@ -97,7 +97,7 @@ public class Student extends Person
   public void displayCourseSchedule()
   {
     //Code
-    //run throught the attends list, and for each section in there print its time and day of week
+    //run through the attends list, and for each section in there print its time and day of week
   }
   /*
    * adds a section to list of sections
