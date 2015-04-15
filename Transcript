@@ -2,7 +2,7 @@ import java.util.*;
 /**
  * class transcript makes a transcript for a student
  */
-public class Transcript extends TranscriptEntry
+public class Transcript
 {
   /**
    * declared variable studentOwner
