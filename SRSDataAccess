@@ -10,8 +10,11 @@ public class SRSDataAccess
   File courseFileName = new File("CourseCatalog.dat");
   File prereqFileName = new File("Prerquisites.dat");
   Scanner facultyScan, scheduleScan, assignmentsScan, courseScan, prereqScan;
-  public void initializeFaculty()
+  
+  public Faculty initializeFaculty()
   {
+    Professor prof;
+    Faculty faculty = new Faculty();
     try{
       Scanner facultyScan = new Scanner(facultyFileName);
     }
@@ -22,22 +25,20 @@ public class SRSDataAccess
     while (facultyScan.hasNextLine())
     {
       String line = facultyScan.nextLine();
-      int index1 = line.indexOf("  ");
-      String name = line.substring(0, index1);
-      int index2 = line.indexOf("  ", index1 + 2);
-      String ssn = line.substring(index1 + 2, index2);
-      int index3 = line.indexOf("  ", index2 + 2);
-      String title = line.substring(index2 + 2, index3);    
-      String department = line.substring(index3 + 2);
+      String[] array1 = line.split("/t");
       
-      
-      Professor prof = new Professor(name, ssn, title, department);
+      prof = new Professor(array1[0],array1[1], array1[2], array1[3]);
+      faculty.addProfessor(array1[1], prof);
       
     }
+    return faculty;
+    facultyScan.close();
   }
   
-   public void initializeSchedule()
+   public ScheduleOfClasses initializeSchedule()
   {
+    Section section;
+    ScheduleOfClasses classes;
     try{
        Scanner scheduleScan = new Scanner(scheduleFileName);
     }
@@ -45,19 +46,16 @@ public class SRSDataAccess
     {
       exc.printStackTrace();
     }
-    String line = facultyScan.nextLine();
-    int index1 = line.indexOf("  ");
-    String courseNo = line.substring(0, index1);
-    int index2 = line.indexOf("  ", index1 + 2);
-    String sectionNo = line.substring(index1 + 2, index2);
-    int index3 = line.indexOf("  ", index2 + 2);
-    String dayOfWeek = line.substring(index2 + 2, index3);
-    int index4 = line.indexOf("  ", index3 + 2);
-    String timeOfDay = line.substring(index3 + 2,index4);
-    int index5 = line.indexOf("  ", index4 + 2);
-    String room = line.substring(index4 + 2,index5);
-    String roomCap = line.substring(index5+2);
-    int roomCapactity = Integer.parseInt(roomCap);
+    while (scheduleScan.hasNextLine())
+    {
+      String line = scheduleScan.nextLine();
+      String[] array = line.split("/t");
+      section = new Section(array[0], array[1], array[2], array[3], array[4], Integer.parseInt(array[5]));
+      classes = new ScheduleOfClasses();
+      classes.addSection(array[0] + " - " + array[1], section);
+    }
+    return classes;
+    scheduleScan.close();
   }
    
    public void initializeAssignments()
