@@ -1,0 +1,113 @@
+import java.io.*;
+import java.util.*;
+import fileChooser.*;
+
+public class SRSDataAccess
+{
+  File scheduleFileName = new File("SoC_AP2005.dat");
+  File facultyFileName = new File("Faculty.dat");
+  File assignmentsFileName = new File("TeachingAssignments.dat");
+  File courseFileName = new File("CourseCatalog.dat");
+  File prereqFileName = new File("Prerquisites.dat");
+  Scanner facultyScan, scheduleScan, assignmentsScan, courseScan, prereqScan;
+  public void initializeFaculty()
+  {
+    try{
+      Scanner facultyScan = new Scanner(facultyFileName);
+    }
+    catch(FileNotFoundException exc)
+    {
+      exc.printStackTrace();
+    }
+    while (facultyScan.hasNextLine())
+    {
+      String line = facultyScan.nextLine();
+      int index1 = line.indexOf("  ");
+      String name = line.substring(0, index1);
+      int index2 = line.indexOf("  ", index1 + 2);
+      String ssn = line.substring(index1 + 2, index2);
+      int index3 = line.indexOf("  ", index2 + 2);
+      String title = line.substring(index2 + 2, index3);    
+      String department = line.substring(index3 + 2);
+      
+      
+      Professor prof = new Professor(name, ssn, title, department);
+      
+    }
+  }
+  
+   public void initializeSchedule()
+  {
+    try{
+       Scanner scheduleScan = new Scanner(scheduleFileName);
+    }
+    catch(FileNotFoundException exc)
+    {
+      exc.printStackTrace();
+    }
+    String line = facultyScan.nextLine();
+    int index1 = line.indexOf("  ");
+    String courseNo = line.substring(0, index1);
+    int index2 = line.indexOf("  ", index1 + 2);
+    String sectionNo = line.substring(index1 + 2, index2);
+    int index3 = line.indexOf("  ", index2 + 2);
+    String dayOfWeek = line.substring(index2 + 2, index3);
+    int index4 = line.indexOf("  ", index3 + 2);
+    String timeOfDay = line.substring(index3 + 2,index4);
+    int index5 = line.indexOf("  ", index4 + 2);
+    String room = line.substring(index4 + 2,index5);
+    String roomCap = line.substring(index5+2);
+    int roomCapactity = Integer.parseInt(roomCap);
+  }
+   
+   public void initializeAssignments()
+  {
+    try{
+        Scanner assignmentsScan = new Scanner(assignmentsFileName);
+    }
+    catch(FileNotFoundException exc)
+    {
+      exc.printStackTrace();
+    }
+    String line = facultyScan.nextLine();
+    int index1 = line.indexOf("  ");
+    String ssn = line.substring(0, index1);
+    String fullSection = line.substring(index1 + 2);
+    
+    
+  }
+   
+   public void initializeCourse()
+  {
+    try{
+       Scanner courseScan = new Scanner(courseFileName);
+    }
+    catch(FileNotFoundException exc)
+    {
+      exc.printStackTrace();
+    }
+    String line = facultyScan.nextLine();
+    int index1 = line.indexOf("  ");
+    String courseNo = line.substring(0, index1);
+    int index2 = line.indexOf("  ", index1 + 2);
+    String courseName = line.substring(index1 + 2, index2);
+    String cred = line.substring(index2+2);
+    double credits = Double.parseDouble(cred);
+  }
+   
+   public void initializePrereq()
+  {
+    try{
+       Scanner prereqScan = new Scanner(prereqFileName);
+    }
+    catch(FileNotFoundException exc)
+    {
+      exc.printStackTrace();
+    }
+    String line = facultyScan.nextLine();
+    int index1 = line.indexOf("  ");
+    String prereq = line.substring(0, index1);
+    String course = line.substring(index1 + 2);
+  }
+  
+}
