@@ -1,97 +1,72 @@
-/**
- * This class sets the title and department of the professor, along with displaying the info, and making sure the
- * professor agrees to teach a certain section
- */
 import java.util.*;
-
-public class Professor 
-{ 
-  private String title, department,name,ssn;
-  
-  
-  private ArrayList<String> teaches = new ArrayList<String>();
-  
-  public Professor(String name, String ssn, String title, String department)
+/**
+ * class ScheduleOfClasses
+ * sets and returns semester of class schedule as well as finding or adding a section to the class schedule
+ */
+public class ScheduleOfClasses
+{
+  /**
+   * declared variable semester
+   */
+  private String semester;
+  private HashMap<String, Section> sectionsOffered = new HashMap<String, Section>();
+  /**
+   * sets the semester of a class schedule
+   * @param semester
+   */
+  public void setSemester(String semester)
   {
-    title = title;
-    department = department;
-    name = name;
-    ssn = ssn;
+    this.semester = semester;
   }
-  
   /**
-   * This method sets the title of the professor to a given title
-   * @param title
+   * gets the semester of a class schedule
+   * @return semester
    */
-  public void setTitle(String title) 
-  { 
-    this.title = title; 
-  } 
-  
-  /**
-   * this method gets the title of the professor anbd returns it
-   * @return title
-   */
-  public String getTitle() 
-  { 
-    return title; 
-  } 
-  
-  /**
-   * this method sets the department name of the professor
-   * @param department
-   */
-  public void setDepartment(String department) 
-  { 
-    this.department = department; 
-  } 
-  
-  /**
-   * this method gets and returns the department of the professor
-   * @return department
-   */
-  public String getDepartment() 
-  { 
-    return department; 
-  } 
-  /**
-   * this method displays the info about the professor
-   */
-  public void display() 
-  { 
-    //code display the information returned from the tostring method
-  } 
-  
-  /**
-   * This method converts the info about the professor to a String
-   * @return null
-   */
-  public String toString() 
-  { 
-    //code
-    return title + department + name + ssn + teaches;
-  } 
-  
-  /**
-   * this method displays the teaching assignments, so which professors teach which classes
-   */
-  public void displayTeaschingAssignments()
+  public String getSemester()
   {
-   //code---Read in assignments from .dat file then display on GUI/ for now print to system
+    return semester;
   }
-  
   /**
-   * This method shows that the teacher has agreed to teach the section
-   * @param section
+   * returns the sections offered of a course
+   * @return sectionsOffered
    */
-  public void agreeToTeach(String section)
+  public Map getSectionsOffered()
   {
-   //code
-    String teachSection = section;
-    teaches.add(teachSection);
+    return sectionsOffered;
   }
-  public String getName()
- {
-  return name; 
- }
-} 
+  /**
+   * displays information about the class schedule
+   */
+  public String display()
+  {
+    return "something";
+  }
+  /**
+   * adds a course section to the class schedule
+   */
+  public void addSection()
+  {
+    
+  }
+  /**
+   * finds the sections of a certain course
+   */
+  public String findSection()
+  {
+    return null;
+  }
+  /**
+   * this method checks to see if the class schedule is empty or not
+   */
+  public boolean isEmpty()
+  {
+    if(sectionsOffered.isEmpty()==true)
+    {
+     return true; 
+    }
+    else
+    {
+     return false; 
+    }
+  }
+}
