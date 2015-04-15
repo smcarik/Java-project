@@ -11,7 +11,7 @@ public class Professor
   
   private ArrayList<String> teaches = new ArrayList<String>();
   
-  public Professor(String title, String department, String name, String ssn)
+  public Professor(String name, String ssn, String title, String department)
   {
     title = title;
     department = department;
