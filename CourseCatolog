@@ -9,27 +9,30 @@ import java.util.*;
 public class CourseCatalog extends Course
 {
   private Course course;
-  private HashMap<Integer, Course> courses = new HashMap<Integer, Course>();
+  private HashMap<String, Course> courses;
+  
+  public CourseCatalog()
+  {
+    courses = new HashMap<String, Course>();
+  }
   
   /**
    * displays the info about the course you are looking up
    */
   public void display()
   {
-    for(Integer courseNo : courses.keySet()){
-      course = courses.get(courseNo);
-      String name = course.toString();
-      System.out.println("Course No: " + courseNo + " Course Name: " + name);
+    for(Course c : courses.values()){
+      c.display();
+      System.out.println();
     }
   }
   
   /**
    * This adds a new course, calling on the course class
    */
-  public void addCourse(Course section)
+  public void addCourse(Course c)
   {
-    Random generator = new Random();
-    courses.put(generator.nextInt(100),section);
+    courses.put(c.getCourseNo(),c);
   }
   
   /**
@@ -38,9 +41,16 @@ public class CourseCatalog extends Course
    * @param courseNo
    * @return courseName
    */
-  public Course findCourse(Integer courseNo)
+  public Course findCourse(String courseNo)
   {
+    if(courses.containsKey(courseNo))
+    {
     return courses.get(courseNo);
+    }
+    else
+    {
+     return null; 
+    }
   }
   
   /**
