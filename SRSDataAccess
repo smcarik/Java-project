@@ -10,12 +10,22 @@ public class SRSDataAccess
   File courseFileName = new File("CourseCatalog.dat");
   File prereqFileName = new File("Prerquisites.dat");
   Scanner facultyScan, scheduleScan, assignmentsScan, courseScan, prereqScan;
+  ScheduleOfClasses classes;
   
+  
+  
+  
+  
+  
+  /*
+   * reads in data from faculty file and populates the faculty map
+   */
   public Faculty initializeFaculty()
   {
     Professor prof;
     Faculty faculty = new Faculty();
     try{
+      Scanner assignmentsScan = new Scanner(assignmentsFileName);
       Scanner facultyScan = new Scanner(facultyFileName);
     }
     catch(FileNotFoundException exc)
@@ -26,21 +36,42 @@ public class SRSDataAccess
     {
       String line = facultyScan.nextLine();
       String[] array1 = line.split("/t");
-      
+      // new prof obj created with, name, ssn, title, dept
       prof = new Professor(array1[0],array1[1], array1[2], array1[3]);
-      faculty.addProfessor(array1[1], prof);
+      //adds prof to professors map in faculty class
+      faculty.addProfessor(prof);
       
     }
-    return faculty;
+    while(assignmentsScan.hasNextLine())
+    {
+      String line = assignmentsScan.nextLine();
+      String[] array2 = line.split("/t");
+      
+      Professor p = faculty.findProfessor(array2[0]);
+      String fullSecNo = array2[1];
+      Section sex = classes.findSection(fullSecNo);
+      p.agreeToTeach(sex);
+    }
+    assignmentsScan.close();
     facultyScan.close();
+    return faculty;
   }
   
-   public ScheduleOfClasses initializeSchedule()
+  
+  
+  //You fail as a teacher
+  
+  
+  
+  /*
+   * reads data in from schedule file and populates schedule map
+   */
+  public ScheduleOfClasses initializeScheduleOfClasses()
   {
     Section section;
-    ScheduleOfClasses classes;
+    classes = new ScheduleOfClasses();
     try{
-       Scanner scheduleScan = new Scanner(scheduleFileName);
+      Scanner scheduleScan = new Scanner(scheduleFileName);
     }
     catch(FileNotFoundException exc)
     {
@@ -50,62 +81,64 @@ public class SRSDataAccess
     {
       String line = scheduleScan.nextLine();
       String[] array = line.split("/t");
-      section = new Section(array[0], array[1], array[2], array[3], array[4], Integer.parseInt(array[5]));
-      classes = new ScheduleOfClasses();
+      section = new Section(Integer.parseInt(array[1]), array[2], array[3], array[4], Integer.parseInt(array[5]));
       classes.addSection(array[0] + " - " + array[1], section);
     }
-    return classes;
     scheduleScan.close();
-  }
-   
-   public void initializeAssignments()
-  {
-    try{
-        Scanner assignmentsScan = new Scanner(assignmentsFileName);
-    }
-    catch(FileNotFoundException exc)
-    {
-      exc.printStackTrace();
-    }
-    String line = facultyScan.nextLine();
-    int index1 = line.indexOf("  ");
-    String ssn = line.substring(0, index1);
-    String fullSection = line.substring(index1 + 2);
-    
-    
-  }
-   
-   public void initializeCourse()
-  {
-    try{
-       Scanner courseScan = new Scanner(courseFileName);
-    }
-    catch(FileNotFoundException exc)
-    {
-      exc.printStackTrace();
-    }
-    String line = facultyScan.nextLine();
-    int index1 = line.indexOf("  ");
-    String courseNo = line.substring(0, index1);
-    int index2 = line.indexOf("  ", index1 + 2);
-    String courseName = line.substring(index1 + 2, index2);
-    String cred = line.substring(index2+2);
-    double credits = Double.parseDouble(cred);
-  }
-   
-   public void initializePrereq()
-  {
-    try{
-       Scanner prereqScan = new Scanner(prereqFileName);
-    }
-    catch(FileNotFoundException exc)
-    {
-      exc.printStackTrace();
-    }
-    String line = facultyScan.nextLine();
-    int index1 = line.indexOf("  ");
-    String prereq = line.substring(0, index1);
-    String course = line.substring(index1 + 2);
+    return classes;
   }
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  public CourseCatalog initializeCourseCatalog()
+  {
+    Course course;
+    CourseCatalog cat = new CourseCatalog();
+    try{
+      Scanner prereqScan = new Scanner(prereqFileName);
+      Scanner courseScan = new Scanner(courseFileName);
+    }
+    catch(FileNotFoundException exc)
+    {
+      exc.printStackTrace();
+    }
+    while (scheduleScan.hasNextLine())
+    {
+      String line = scheduleScan.nextLine();
+      String[] array = line.split("/t");
+      course = new Course(array[0], array[1], Double.parseDouble(array[2]));
+      cat.addCourse(course);
+    }
+    
+    while(prereqScan.hasNextLine())
+    {
+      String line2 = prereqScan.nextLine();
+      String[] array = line2.split("/t");
+      String courseNo = array[1];
+      String prereqNo = array[0];
+      Course c = cat.findCourse(courseNo);
+      Course p = cat.findCourse(prereqNo);
+      if(!p.equals(null) && !c.equals(null))
+      {
+        c.addPrerequisite(p);
+      }
+      
+    }
+    
+    prereqScan.close();
+    courseScan.close();
+    return cat;
+  }
 }
