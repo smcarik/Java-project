@@ -3,13 +3,17 @@ import java.util.*;
  * class ScheduleOfClasses
  * sets and returns semester of class schedule as well as finding or adding a section to the class schedule
  */
-public class ScheduleOfClasses
+public class ScheduleOfClasses extends Section
 {
   /**
    * declared variable semester
    */
   private String semester;
-  private HashMap<String, Section> sectionsOffered = new HashMap<String, Section>();
+  private HashMap<String, Section> sectionsOffered;
+  public ScheduleOfClasses()
+  {
+    sectionsOffered = new HashMap<String, Section>();
+  }
   /**
    * sets the semester of a class schedule
    * @param semester
@@ -30,30 +34,38 @@ public class ScheduleOfClasses
    * returns the sections offered of a course
    * @return sectionsOffered
    */
-  public Map getSectionsOffered()
+  public Section getSectionsOffered()
   {
-    return sectionsOffered;
+    //figure the fuck out what code to put here and put it in at some other point in time, because right now i cant thingk straight and simply dont give a flying fuck anmore
+    return null;
   }
   /**
    * displays information about the class schedule
    */
-  public String display()
+  public void display()
   {
-    return "something";
+    for(Section key:sectionsOffered.values())
+    {
+     key.display();
+     System.out.println();
+    }
   }
   /**
    * adds a course section to the class schedule
    */
-  public void addSection()
+  public void addSection(String fullSection, Section section)
   {
-    
+    sectionsOffered.put(fullSection, section);
   }
   /**
    * finds the sections of a certain course
    */
-  public String findSection()
+  public Section findSection(String fullSection)
   {
-    return null;
+    Section s = null;
+    if(sectionsOffered.containsKey(fullSection))
+      s = sectionsOffered.get(fullSection);
+    return s;
   }
   /**
    * this method checks to see if the class schedule is empty or not
