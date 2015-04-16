@@ -7,7 +7,8 @@ public class Section
   /**
    * declared variables used within this class
    **/
-  private String sectionNo, dayOfWeek, timeOfDay, room;
+  private String dayOfWeek, timeOfDay, room;
+  private int sectionNo;
   private int seatingCapacity;
   private Professor instructor;
   private Course representedCourse;
@@ -20,7 +21,7 @@ public class Section
    **/
   public Section()
   {
-    sectionNo="UNASSIGNED";
+    sectionNo=0;
     dayOfWeek="UNASSIGNED";
     timeOfDay="UNASSIGNED";
     room="UNASSIGNED";
@@ -32,7 +33,8 @@ public class Section
     assignedGrades = new HashMap<Student, TranscriptEntry>();
   }
   
-  public Section(Course courseNo, String sectionNo, String dayOfWeek, String timeOfDay, String room, int seatingCapacity)
+  public Section(int sectionNo, String dayOfWeek, String timeOfDay,
+                 String room, int seatingCapacity)
   
   {
     this.sectionNo=sectionNo;
@@ -40,12 +42,11 @@ public class Section
     this.timeOfDay=timeOfDay;
     this.room=room;
     this.seatingCapacity=seatingCapacity;
-    this.representedCourse=courseNo;
     enrolledStudents = new HashMap<String, Student>();
     assignedGrades = new HashMap<Student, TranscriptEntry>();
     
   }
-  public void setSectionNo(String sectionNo)
+  public void setSectionNo(int sectionNo)
   {
     this.sectionNo = sectionNo;
   }
@@ -53,7 +54,7 @@ public class Section
    * returns the sectionNo
    * @return sectionNo 
    **/
-  public String getSectionNo()
+  public int getSectionNo()
   {
     return sectionNo;
   }
@@ -183,7 +184,11 @@ public class Section
    **/
   public String getFullSectionNo()
   {
-    return representedCourse.getCourseNo() + " - " + sectionNo;
+    Course course = this.getRepresentedCourse();
+    String courseNo = course.getCourseNo();
+    String fullSectNo = courseNo + "-" + this.getSectionNo();
+    return fullSectNo;
+
   }
   /**
    * adds student to list of enrolled students
