@@ -88,7 +88,9 @@ public class TranscriptEntry extends Transcript
   
   public Boolean validateGrade(String grade)
   {
-    if (grade.equals("A") || grade.equals("A-") || grade.equals("B+") || grade.equals("B") || grade.equals("B-") || grade.equals("C+") || grade.equals("C") || grade.equals("C-") || grade.equals("D+") || grade.equals("D") || grade.equals("D-") || grade.equals("F"))
+    if (grade.equals("A") || grade.equals("A-") || grade.equals("B+") || grade.equals("B") ||
+        grade.equals("B-") || grade.equals("C+") || grade.equals("C") || grade.equals("C-") ||
+        grade.equals("D+") || grade.equals("D") || grade.equals("D-") || grade.equals("F"))
     {
       return true;
     }
@@ -99,7 +101,9 @@ public class TranscriptEntry extends Transcript
   }
   public Boolean passingGrade(String grade)
   {
-    if (grade.equals("A") || grade.equals("A-") || grade.equals("B+") || grade.equals("B") || grade.equals("B-") || grade.equals("C+") || grade.equals("C") || grade.equals("C-") || grade.equals("D+") || grade.equals("D") || grade.equals("D-"))
+    if (grade.equals("A") || grade.equals("A-") || grade.equals("B+") || grade.equals("B") ||
+        grade.equals("B-") || grade.equals("C+") || grade.equals("C") || grade.equals("C-") ||
+        grade.equals("D+") || grade.equals("D") || grade.equals("D-"))
     {
       return true;
     }
