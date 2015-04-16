@@ -16,7 +16,7 @@ public class Student extends Person
   //possibly an String or an Object variable, unsure
   Transcript transcript;
   
-  ArrayList<Section> attends = new ArrayList<Section>();
+  ArrayList<Section> attends;
 /*
  * Creates a new student object
  */
@@ -27,6 +27,7 @@ public class Student extends Person
     major = major;
     degree = degree;
     transcript = transcript;
+    attends = new ArrayList<Section>();
   }
     /**
    * sets the major of the student object
