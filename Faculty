@@ -5,49 +5,41 @@ import java.util.*;
  */
 public class Faculty
 {
-  Map<String, Professor> professors = new HashMap<String, Professor>();
+  Map<String, Professor> professors;
   private Professor professor;
+  
+  public Faculty()
+  {
+    professors = new HashMap<String, Professor>();
+  }
   
   /**
    * This method displays any info about a professor
    */
   public void display()
   {
-    for(String ssn : professors.keySet())
+    for (Professor p : professors.values()) 
     {
-      professor = professors.get(ssn);
-      //this line may not work when testing.
-      String name = professor.toString();
-      System.out.println("key: " + ssn + " Professors: " + name);
+      p.display();
+      System.out.println();
     }
   }
-  /**
-   * this method adds a new professor to the list of professors
+    /**
+     * this method adds a new professor to the list of professors
    */
-  public void addProfessor(String ssn, Professor proffesor)
+  public void addProfessor(Professor proffesor)
   {
-    professors.put(ssn,proffesor);
+    professors.put(proffesor.getSsn(),proffesor);
   }
   
   /**
    * Given an ssn, this method checks for a professor and finds one
    * @param ssn
    */
-  public String findProfessor(String ssn)
+  public Professor findProfessor(String ssn) 
   {
-    if(professors.containsKey(ssn))
-    {
-      professor = professors.get(ssn);
-      //this line may not work when testing.
-      String name = professor.toString();
-      return "The professor with the ssn: " + ssn + " is " + name;
-    }
-    else
-    {
-     return "There is no professor with that ssn in our system."; 
-    }
+    return (Professor) professors.get(ssn);
   }
-  
   /**
    * This method checks to see if the professor is empty, as in number of classes they teach
    */
