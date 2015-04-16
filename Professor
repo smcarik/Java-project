@@ -4,12 +4,12 @@
  */
 import java.util.*;
 
-public class Professor 
+public class Professor extends Person
 { 
   private String title, department,name,ssn;
   
   
-  private ArrayList<String> teaches = new ArrayList<String>();
+  private ArrayList<Section> teaches;
   
   public Professor(String name, String ssn, String title, String department)
   {
@@ -17,6 +17,7 @@ public class Professor
     department = department;
     name = name;
     ssn = ssn;
+    teaches = new ArrayList<Section>();
   }
   
   /**
@@ -60,6 +61,7 @@ public class Professor
   public void display() 
   { 
     //code display the information returned from the tostring method
+    System.out.println("name: " + name + " ssn: " + ssn + " title: " + title + " department: " + department);
   } 
   
   /**
@@ -69,7 +71,8 @@ public class Professor
   public String toString() 
   { 
     //code
-    return title + department + name + ssn + teaches;
+    return "name: " + name + " ssn: " + ssn + " title: " + title + " department: " + department +
+      " teaches: " + teaches;
   } 
   
   /**
@@ -78,20 +81,35 @@ public class Professor
   public void displayTeaschingAssignments()
   {
    //code---Read in assignments from .dat file then display on GUI/ for now print to system
+    if(teaches.isEmpty())
+    {
+     System.out.println("no teaching assignemtns available"); 
+    }
+    else if(!teaches.isEmpty())
+    {
+      System.out.println("This teacher teaches: ");
+      for(Section key: teaches)
+      {
+       System.out.print(key + ", ");
+      }
+    }
   }
   
   /**
    * This method shows that the teacher has agreed to teach the section
    * @param section
    */
-  public void agreeToTeach(String section)
+  public void agreeToTeach(Section section)
   {
-   //code
-    String teachSection = section;
-    teaches.add(teachSection);
+    teaches.add(section);
+    section.setInstructor(this);
   }
   public String getName()
- {
-  return name; 
- }
+  {
+    return name; 
+  }
+  public String getSsn()
+  {
+    return ssn; 
+  }
 } 
