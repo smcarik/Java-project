@@ -1,1 +1,42 @@
+/*File: SRSTester.java*/
+import acm.program.Program;
 
+public class SRSTester extends Program{
+  private static Faculty faculty;
+  private static CourseCatalog courseCatalog;
+  private static ScheduleOfClasses scheduleOfClasses;
+  
+  public void init(){
+    try{
+      courseCatalog = SRSDataAccess.initializeCourseCatalog();
+      scheduleOfClasses = 
+        SRSDataAccess.initializeScheduleOfClasses("Spring");
+      faculty = SRSDataAccess.initializeFaculty();
+      Student student1 = SRSDataAccess.initializeStudent("111-11-1111");
+      Student student2 = SRSDataAccess.initializeStudent("222-22-2222");
+      Student student3 = SRSDataAccess.initializeStudent("333-33-3333");
+      Student student4 = SRSDataAccess.initializeStudent("444-44-4444");
+      student4.addSection(scheduleOfClasses.findSection("CMP999 - 1"));
+      SRSDataAccess.persistStudent(student4);
+    }catch(Exception e){ 
+      System.out.println(e.getMessage());
+    }
+  }
+  
+  /*
+   * For now, just keeps the program of quitting.
+   */
+  public void run(){
+    courseCatalog.display();
+    scheduleOfClasses.display();
+    faculty.display();
+    while(true){
+      if(Character.toLowerCase(readLine("Quit? (y/n) ").charAt(0)) == 'y')
+        break;
+    }
+  }
+  
+  public static void main(String[] args) {
+    new SRSTester().start();
+  }
+}
