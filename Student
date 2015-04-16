@@ -20,13 +20,23 @@ public class Student extends Person
 /*
  * Creates a new student object
  */
-  public Student(String name, String ssn, String major, String degree, Transcript transcript)
+  public Student()
+  {
+   name ="empty";
+   ssn = "empty";
+   major= "empty";
+   degree="empty";
+   transcript= null;
+   attends = new ArrayList<Section>();
+   
+  }
+  public Student(String ssn, String name, String major, String degree)
   {
     name = name;
     ssn = ssn;
     major = major;
     degree = degree;
-    transcript = transcript;
+    transcript = null;
     attends = new ArrayList<Section>();
   }
     /**
