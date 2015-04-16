@@ -77,13 +77,10 @@ public class Course
    * displays information about the class
    * @ return something
    */
-  public void display()
+    public void display()
   {
-    for (int i = 0; i < offeredAsSection.size(); i++)
-    {
-      String info = toString();
-      System.out.println("Section Number: " + offeredAsSection.get(i) + "Prerequisites: " + prerequisites.get(i) + info);
-    }                            
+    System.out.println("Course number: " + courseNo + " Course name: " +
+                       courseName + " Credits: " + credits);                      
   }
   
   /**
@@ -98,9 +95,9 @@ public class Course
   /**
    * this method adds the prerequisites of the class, if there are any
    */
-  public void addPrerequisite()
+  public void addPrerequisite(Course prereq)
   {
-   
+    prerequisites.add(prereq);
   }
   
   /**
@@ -108,14 +105,21 @@ public class Course
    */
   public Boolean hasPrerequisites()
   {
-    return false;
+    if (prerequisites.size() == 0 )
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
   }
   
   /**
    * gets the prerequsites required to enrol for the class
    * @return prerequisites
    */
-  public ArrayList getPrerequisites()
+  public ArrayList<Course> getPrerequisites()
   {
     return prerequisites;
   }
@@ -123,16 +127,16 @@ public class Course
   /**
    * schedules the section by adding it to the schedule
    */
-  public void scheduleSection()
+  public void scheduleSection(String day, String time, String room, int capacity)
   {
-    
+    Section section = new Section(offeredAsSection.size()+1, day, time, room, capacity);
+    this.addSection(section);
   }
-  
   /**
    * adds the section to the class schedule
    */
-  public void addSection()
+ public void addSection(Section section)
   {
-    
+    offeredAsSection.add(section);
   }
 }
