@@ -4,13 +4,13 @@ import fileChooser.*;
 
 public class SRSDataAccess
 {
-  File scheduleFileName = new File("SoC_AP2005.dat");
-  File facultyFileName = new File("Faculty.dat");
-  File assignmentsFileName = new File("TeachingAssignments.dat");
-  File courseFileName = new File("CourseCatalog.dat");
-  File prereqFileName = new File("Prerquisites.dat");
-  Scanner facultyScan, scheduleScan, assignmentsScan, courseScan, prereqScan;
-  ScheduleOfClasses classes;
+  static File scheduleFileName = new File("SoC_AP2005.dat");
+  static File facultyFileName = new File("Faculty.dat");
+  static File assignmentsFileName = new File("TeachingAssignments.dat");
+  static File courseFileName = new File("CourseCatalog.dat");
+  static File prereqFileName = new File("Prerequisites.dat");
+  static Scanner facultyScan, scheduleScan, assignmentsScan, courseScan, prereqScan, studentScan;
+  static ScheduleOfClasses classes;
   
   
   
@@ -20,7 +20,7 @@ public class SRSDataAccess
   /*
    * reads in data from faculty file and populates the faculty map
    */
-  public Faculty initializeFaculty()
+  public static Faculty initializeFaculty()
   {
     Professor prof;
     Faculty faculty = new Faculty();
@@ -66,7 +66,7 @@ public class SRSDataAccess
   /*
    * reads data in from schedule file and populates schedule map
    */
-  public ScheduleOfClasses initializeScheduleOfClasses()
+  public static ScheduleOfClasses initializeScheduleOfClasses(String semester)
   {
     Section section;
     classes = new ScheduleOfClasses();
@@ -77,6 +77,7 @@ public class SRSDataAccess
     {
       exc.printStackTrace();
     }
+    classes.setSemester(semester);
     while (scheduleScan.hasNextLine())
     {
       String line = scheduleScan.nextLine();
@@ -102,7 +103,7 @@ public class SRSDataAccess
   
   
   
-  public CourseCatalog initializeCourseCatalog()
+  public static CourseCatalog initializeCourseCatalog()
   {
     Course course;
     CourseCatalog cat = new CourseCatalog();
@@ -140,5 +141,51 @@ public class SRSDataAccess
     prereqScan.close();
     courseScan.close();
     return cat;
+  }
+  
+  
+  
+  
+  
+  public static Student initializeStudent(String ssn)
+  {
+    File studentFile = new File(ssn + ".dat");
+    Section section;
+    Student student;
+    try
+    {
+      Scanner studentScan = new Scanner(studentFile);
+    }
+    catch(FileNotFoundException exc)
+    {
+     exc.printStackTrace(); 
+    }
+      String line = studentScan.nextLine();
+      String array[] = line.split("/t");
+      student = new Student(array[0],array[1],array[2],array[3]);
+    
+    
+    while(studentScan.hasNextLine()){
+      array =  studentScan.nextLine().split("/t");
+      if(array[0] instanceof String){
+        section = classes.findSection(array[0]);
+        section.enroll(student);
+      }
+    }
+    studentScan.close();
+    return student;
+  }
+  
+  /*
+   * Saves student to its own ssn.dat file.
+   * 
+   * @param student Student to be saved to it's ssn.dat file.
+   */
+  public static void persistStudent(Student student) 
+    throws FileNotFoundException{
+    
+    PrintWriter studentFile = new PrintWriter(student.getSsn() + ".dat");
+    studentFile.print(student);
+    studentFile.close();
   }
 }
