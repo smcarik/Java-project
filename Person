@@ -10,37 +10,29 @@ public abstract class Person
   * This method sets the name of a person to a variable
   * @param name
   */
- public void setName(String name)
- {
-  this.name=name; 
- }
+ public abstract void setName(String name);
+
  
  /**
   * this method sets the ssn of a person
   * @param ssn
   */
- public void setSsn(String ssn)
- {
-   this.ssn=ssn;
- }
+ public abstract void setSsn(String ssn);
+ 
  
  /**
   * this method gets the name of a person and returns it
   * @return name
   */
- public String getName()
- {
-  return name; 
- }
+ public abstract String getName();
+
  
  /**
   * this method gets the ssn of a person and returns it
   * @return ssn
   */
- public String getSsn()
- {
-  return ssn; 
- }
+ public abstract String getSsn();
+
  
  /**
   * this method displays info about the person
