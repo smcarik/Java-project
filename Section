@@ -11,7 +11,7 @@ public class Section
   private int sectionNo;
   private int seatingCapacity;
   private Professor instructor;
-  private Course representedCourse;
+  private String representedCourse;
   private ScheduleOfClasses offeredIn;
   private HashMap<String, Student> enrolledStudents;
   private HashMap<Student, TranscriptEntry> assignedGrades;
@@ -110,7 +110,7 @@ public class Section
    * sets the course that the section is representing
    * @param course the course the section represents
    **/
-  public void setRepresentedCourse(Course course)
+  public void setRepresentedCourse(String course)
   {
     this.representedCourse = course;
   }
@@ -118,7 +118,7 @@ public class Section
    * gets the course represented by the section
    * @return representedCourse returns the course represented
    **/
-  public Course getRepresentedCourse()
+  public String getRepresentedCourse()
   {
     return representedCourse;
   }
@@ -176,7 +176,9 @@ public class Section
    **/
   public String toString()
   {
-    return sectionNo+dayOfWeek+timeOfDay+room+seatingCapacity+instructor+representedCourse+offeredIn;
+    return "Section Number: " + sectionNo + " Day of The Week: " + dayOfWeek + " Time: "+ timeOfDay + 
+      " Room Number: " + room + " Seating Capacity: " + seatingCapacity + " Instructor: " + instructor + 
+      " Represented Course: " + representedCourse;
   }
   /**
    * gets the section number and course number
@@ -184,9 +186,9 @@ public class Section
    **/
   public String getFullSectionNo()
   {
-    Course course = this.getRepresentedCourse();
-    String courseNo = course.getCourseNo();
-    String fullSectNo = courseNo + "-" + this.getSectionNo();
+    String course = this.getRepresentedCourse();
+    //String courseNo = course.getCourseNo();
+    String fullSectNo = course + "-" + this.getSectionNo();
     return fullSectNo;
 
   }
@@ -233,11 +235,9 @@ public class Section
    **/
   public void display()
   {
-    //displays the information to GUI
-    //for now print to system
-    System.out.println(enrolledStudents);
-    System.out.println(assignedGrades);
-    //also print information acquired from toString method
+    String potato = this.getFullSectionNo();
+    System.out.println(potato);
+    
   }
   /**
    * displays the roster of students
