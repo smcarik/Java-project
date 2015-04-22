@@ -9,6 +9,7 @@ import java.util.*;
 public class MainFrame extends JFrame
 {
   private JDesktopPane theDesktop;
+  private JInternalFrame loginFrame, loggedOff, findStudentFrame;
   
   public MainFrame() 
   {
@@ -36,62 +37,58 @@ public class MainFrame extends JFrame
     file.add( login ); // add new frame item to File menu
     file.add( logoff );
     file.add(close);
-    
     student.add(findStudent); // add new frame item to Student menu
     student.add(studentSchedule);
     student.add(addSection);
     student.add(dropSection);
     student.add(viewTranscript);
-    
     professor.add(findProfessor); // add new frame item to Professor menu
     professor.add(teachingAssignments);
     professor.add(studentRoster);
     professor.add(agreeToTeach);
-    
     bar.add(file); // add File menu to menu bar
     bar.add(student); // add student menu to menu bar
     bar.add(professor);// add Professor menu to menu bar
     setJMenuBar(bar); // set menu bar for this application
-    
     theDesktop = new JDesktopPane(); // create desktop pane
     add( theDesktop ); // add desktop pane to frame    
-    
-    /*set up listener for newFrame menu item**/
-    ActionListener loginItemListener = new LoginItemListener();
-    login.addActionListener(loginItemListener);
-    ActionListener logoffItemListener = new LogoffItemListener();
-    logoff.addActionListener(logoffItemListener);
+    // set up listener for newFrame menu item
+    ActionListener loginItemlistener = new LoginItemListner();
+    login.addActionListener(loginItemlistener);
+    ActionListener logoffItemlistener = new LogoffItemListner();
+    logoff.addActionListener(logoffItemlistener);
     ActionListener closeItemListener = new CloseItemListener();
     close.addActionListener(closeItemListener);
-    ActionListener findStudentListener = new FindStudentListener();
-    student.addActionListener(FindStudentListener());
-    
-    
-  } 
+    ActionListener findStudentItemlistener = new FindStudentItemListener();
+    findStudent.addActionListener(findStudentItemlistener);
+  }
   
-  class LoginItemListener implements ActionListener
-  {  
+  class LoginItemListner implements ActionListener
+  {
     public void actionPerformed(ActionEvent event)
-    {  
+    {
       JInternalFrame loginFrame = new LoginInternalFrame();
-      loginFrame.pack(); // set internal frame to size of contents      
+      loginFrame.pack(); // set internal frame to size of contents  
       theDesktop.add( loginFrame ); // attach internal frame
       loginFrame.setVisible( true ); // show internal frame
       loginFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+      
     }
   }
   
-  class LogoffItemListener implements ActionListener
-  {  
+  class LogoffItemListner implements ActionListener
+  {
     public void actionPerformed(ActionEvent event)
     {
-      JInternalFrame frame = new JInternalFrame( "", true, true, true, true );
-      JLabel label = new JLabel("You have been logged off!");
-      theDesktop.add( frame ); // attach internal frame
-      frame.add(label); //add label
-      frame.pack();// set internal frame to size of contents   
-      frame.setVisible( true ); // show internal frame
-      frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+      //Save all of the info, then log them off
+      
+      JInternalFrame loggedOff = new JInternalFrame(" ", true, true);
+      JLabel label = new JLabel("You have been successfully Logged Off!");
+      loggedOff.add(label);
+      loggedOff.pack();
+      theDesktop.add(loggedOff);
+      loggedOff.setVisible(true);
+      loggedOff.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
   }
   
@@ -103,19 +100,49 @@ public class MainFrame extends JFrame
     }
   }
   
-  class FindStudentListener implements ActionListener
+  class FindStudentItemListener implements ActionListener
   {
     public void actionPerformed(ActionEvent event)
     {
-      JInternalFrame frame = new JInternalFrame("Find Student",true,true,true,true);
-      JLabel label = new JLabel("SSN: ");
+      JInternalFrame findStudentFrame = new JInternalFrame("Find Student", true, true, true, true);
+      findStudentFrame.setLayout(new GridLayout(6, 2, 0, 10));
+      theDesktop.add(findStudentFrame);
+      findStudentFrame.setVisible(true);
+      JLabel ssn = new JLabel("Enter SSN: ");
+      JTextField ssnText = new JTextField(11);
+      JLabel name = new JLabel("Name: ");
+      JTextArea nameResult = new JTextArea();
+      JLabel ssn2 = new JLabel("SSN: ");
+      JTextArea ssn2Result = new JTextArea();
+      JLabel major = new JLabel("Major: ");
+      JTextArea majorResult = new JTextArea();
+      JLabel degree = new JLabel("Degree: ");
+      JTextArea degreeResult = new JTextArea();
+      JButton button = new JButton("Search");
+      JButton close = new JButton("Close");
+      //ActionListener closeButtonItemlistener = new CloseButtonItemListener();
+      //close.addActionListener(findStudentItemlistener);
+      
+      findStudentFrame.add(ssn);
+      findStudentFrame.add(ssnText);
+      findStudentFrame.add(name);
+      findStudentFrame.add(nameResult);
+      findStudentFrame.add(ssn2);
+      findStudentFrame.add(ssn2Result);
+      findStudentFrame.add(major);
+      findStudentFrame.add(majorResult);
+      findStudentFrame.add(degree);
+      findStudentFrame.add(degreeResult);
+      findStudentFrame.add(button);
+      findStudentFrame.add(close);
+      findStudentFrame.pack();
+      findStudentFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
       
     }
   }
   
-  
   public static void main( String[] args )
-  { 
+  {
     MainFrame desktopFrame = new MainFrame();  
     desktopFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     desktopFrame.setSize( 600, 480 ); // set frame size
