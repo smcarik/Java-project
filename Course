@@ -15,8 +15,8 @@ public class Course
     credits = 0.0;
     courseName = "UNASSIGNED";
     courseNo = "UNASSIGNED";
-    ArrayList<Course> prerequisites = new ArrayList<Course>();
-    ArrayList<Section> offeredAsSection = new ArrayList<Section>();
+    prerequisites = new ArrayList<Course>();
+    offeredAsSection = new ArrayList<Section>();
   }
   
   public Course(String courseNo, String courseName, double credits)
@@ -24,8 +24,8 @@ public class Course
     this.credits = credits;
     this.courseName= courseName;
     this.courseNo= courseNo;
-    ArrayList<Course> prerequisites = new ArrayList<Course>();
-    ArrayList<Section> offeredAsSection = new ArrayList<Section>();
+    prerequisites = new ArrayList<Course>();
+    offeredAsSection = new ArrayList<Section>();
   }
   
   //@param courseNo enter the course number that you are setting
@@ -80,7 +80,7 @@ public class Course
     public void display()
   {
     System.out.println("Course number: " + courseNo + " Course name: " +
-                       courseName + " Credits: " + credits);                      
+                       courseName + " Credits: " + credits + " PreReqs: " + prerequisites);
   }
   
   /**
