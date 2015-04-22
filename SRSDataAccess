@@ -1,14 +1,13 @@
 import java.io.*;
 import java.util.*;
-import fileChooser.*;
 
 public class SRSDataAccess
 {
-  static File scheduleFileName = new File("SoC_AP2005.dat");
-  static File facultyFileName = new File("Faculty.dat");
-  static File assignmentsFileName = new File("TeachingAssignments.dat");
-  static File courseFileName = new File("CourseCatalog.dat");
-  static File prereqFileName = new File("Prerequisites.dat");
+  static File scheduleFileName = new File("dat/SoC_SP2005.dat");
+  static File facultyFileName = new File("dat/Faculty.dat");
+  static File assignmentsFileName = new File("dat/TeachingAssignments.dat");
+  static File courseFileName = new File("dat/CourseCatalog.dat");
+  static File prereqFileName = new File("dat/Prerequisites.dat");
   static Scanner facultyScan, scheduleScan, assignmentsScan, courseScan, prereqScan, studentScan;
   static ScheduleOfClasses classes;
   
@@ -17,49 +16,11 @@ public class SRSDataAccess
   
   
   
-  /*
-   * reads in data from faculty file and populates the faculty map
-   */
-  public static Faculty initializeFaculty()
-  {
-    Professor prof;
-    Faculty faculty = new Faculty();
-    try{
-      Scanner assignmentsScan = new Scanner(assignmentsFileName);
-      Scanner facultyScan = new Scanner(facultyFileName);
-    }
-    catch(FileNotFoundException exc)
-    {
-      exc.printStackTrace();
-    }
-    while (facultyScan.hasNextLine())
-    {
-      String line = facultyScan.nextLine();
-      String[] array1 = line.split("/t");
-      // new prof obj created with, name, ssn, title, dept
-      prof = new Professor(array1[0],array1[1], array1[2], array1[3]);
-      //adds prof to professors map in faculty class
-      faculty.addProfessor(prof);
-      
-    }
-    while(assignmentsScan.hasNextLine())
-    {
-      String line = assignmentsScan.nextLine();
-      String[] array2 = line.split("/t");
-      
-      Professor p = faculty.findProfessor(array2[0]);
-      String fullSecNo = array2[1];
-      Section sex = classes.findSection(fullSecNo);
-      p.agreeToTeach(sex);
-    }
-    assignmentsScan.close();
-    facultyScan.close();
-    return faculty;
-  }
   
   
   
-  //You fail as a teacher
+  
+  
   
   
   
@@ -72,20 +33,33 @@ public class SRSDataAccess
     classes = new ScheduleOfClasses();
     try{
       Scanner scheduleScan = new Scanner(scheduleFileName);
+      
+      
+      classes.setSemester(semester);
+      while (scheduleScan.hasNextLine())
+      {
+        String line = scheduleScan.nextLine();
+        //System.out.println("THE LINE: " + line);
+        String[] array = line.split("\t");
+        
+        //System.out.println("array[0]="+array[0]); 
+        //System.out.println("array[1]="+array[1]); 
+        //System.out.println("array[2]="+array[2]);
+        //System.out.println("array[3]="+array[3]); 
+        //System.out.println("array[4]="+array[4]); 
+        //System.out.println("array[5]="+array[5]);
+        
+        section = new Section(Integer.parseInt(array[1]), array[2], array[3], array[4], Integer.parseInt(array[5]));
+        section.setRepresentedCourse(array[0]);
+        //System.out.println(section.toString());
+        classes.addSection(array[0] + " - " + array[1], section);
+      }
+      scheduleScan.close();
     }
     catch(FileNotFoundException exc)
     {
       exc.printStackTrace();
     }
-    classes.setSemester(semester);
-    while (scheduleScan.hasNextLine())
-    {
-      String line = scheduleScan.nextLine();
-      String[] array = line.split("/t");
-      section = new Section(Integer.parseInt(array[1]), array[2], array[3], array[4], Integer.parseInt(array[5]));
-      classes.addSection(array[0] + " - " + array[1], section);
-    }
-    scheduleScan.close();
     return classes;
   }
   
@@ -108,39 +82,116 @@ public class SRSDataAccess
     Course course;
     CourseCatalog cat = new CourseCatalog();
     try{
-      Scanner prereqScan = new Scanner(prereqFileName);
       Scanner courseScan = new Scanner(courseFileName);
+      Scanner prereqScan = new Scanner(prereqFileName);
+      
+      
+      
+      while (courseScan.hasNextLine())
+      {
+        String line = courseScan.nextLine();
+        
+        String[] array = line.split("\t");
+        
+        //System.out.println("array[0]="+array[0]); 
+        //System.out.println("array[1]="+array[1]); 
+        //System.out.println("array[2]="+array[2]);
+        
+        course = new Course(array[0], array[1], Double.parseDouble(array[2]));
+        cat.addCourse(course);
+      }
+      
+      while(prereqScan.hasNextLine())
+      {
+        String line2 = prereqScan.nextLine();
+        String[] array1 = line2.split("\t");
+        String courseNo = array1[1];
+        String prereqNo = array1[0];
+        Course c = cat.findCourse(courseNo);
+        //System.out.println("found course" + c);
+        Course p = cat.findCourse(prereqNo);
+        if(!p.equals(null) && !c.equals(null))
+        {
+          c.addPrerequisite(p);
+        }
+        
+      }
+      
+      prereqScan.close();
+      courseScan.close();
+      
+    }
+    
+    catch(FileNotFoundException exc)
+    {
+      System.out.println("courseCatalog couldnt be initialized");
+      exc.printStackTrace();
+    }
+    
+    return cat;
+  }
+  
+  
+  
+  
+  
+  /*
+   * reads in data from faculty file and populates the faculty map
+   */
+  public static Faculty initializeFaculty()
+  {
+    Professor prof;
+    Faculty faculty = new Faculty();
+    try{
+      Scanner assignmentsScan = new Scanner(assignmentsFileName);
+      Scanner facultyScan = new Scanner(facultyFileName);
+      
+      
+      while (facultyScan.hasNextLine())
+      {
+        String line = facultyScan.nextLine();
+        //System.out.println("THE LINE: " + line);
+        String[] array1 = line.split("\t");
+        
+        
+        //System.out.println("array[0]="+array1[0]); 
+        //System.out.println("array[1]="+array1[1]); 
+        //System.out.println("array[2]="+array1[2]);
+        //System.out.println("array[3]="+array1[3]);
+        
+        // new prof obj created with, name, ssn, title, dept
+        prof = new Professor(array1[0],array1[1], array1[2], array1[3]);
+       
+        //adds prof to professors map in faculty class
+        faculty.addProfessor(prof);
+        
+      }
+      while(assignmentsScan.hasNextLine())
+      {
+        String line1 = assignmentsScan.nextLine();
+        String[] array2 = line1.split("\t");
+        
+        
+        //System.out.println("array[0]="+array2[0]); 
+        //System.out.println("array[1]="+array2[1]); 
+        
+        
+        Professor p = faculty.findProfessor(array2[0]);
+        String fullSecNo = array2[1];
+        //ERROR: This line is the error
+        Section sex = classes.findSection(fullSecNo);
+        //System.out.println(sex.toString());
+        p.agreeToTeach(sex);
+      }
+      assignmentsScan.close();
+      facultyScan.close();
     }
     catch(FileNotFoundException exc)
     {
       exc.printStackTrace();
     }
-    while (scheduleScan.hasNextLine())
-    {
-      String line = scheduleScan.nextLine();
-      String[] array = line.split("/t");
-      course = new Course(array[0], array[1], Double.parseDouble(array[2]));
-      cat.addCourse(course);
-    }
     
-    while(prereqScan.hasNextLine())
-    {
-      String line2 = prereqScan.nextLine();
-      String[] array = line2.split("/t");
-      String courseNo = array[1];
-      String prereqNo = array[0];
-      Course c = cat.findCourse(courseNo);
-      Course p = cat.findCourse(prereqNo);
-      if(!p.equals(null) && !c.equals(null))
-      {
-        c.addPrerequisite(p);
-      }
-      
-    }
-    
-    prereqScan.close();
-    courseScan.close();
-    return cat;
+    return faculty;
   }
   
   
@@ -149,30 +200,37 @@ public class SRSDataAccess
   
   public static Student initializeStudent(String ssn)
   {
-    File studentFile = new File(ssn + ".dat");
+    //File studentFile = new File(ssn + ".dat");
     Section section;
-    Student student;
+    Student student = new Student();
     try
     {
-      Scanner studentScan = new Scanner(studentFile);
+      Scanner studentScan = new Scanner(new File("dat/" + ssn + ".dat"));
+      String line = studentScan.nextLine();
+      String array[] = line.split("\t");
+      //System.out.println("THE LINE: " + line);
+      student.setSsn(array[0]);
+      student.setName(array[1]);
+      student.setMajor(array[2]);
+      student.setDegree(array[3]);
+      //student = new Student(array[0],array[1],array[2],array[3]);
+      //System.out.println(student.toString());
+      
+      
+      while(studentScan.hasNextLine()){
+        array =  studentScan.nextLine().split("\t");
+        if(array[0] instanceof String){
+          section = classes.findSection(array[0]);
+          section.enroll(student);
+        }
+      }
+      studentScan.close();
     }
     catch(FileNotFoundException exc)
     {
-     exc.printStackTrace(); 
+      exc.printStackTrace(); 
     }
-      String line = studentScan.nextLine();
-      String array[] = line.split("/t");
-      student = new Student(array[0],array[1],array[2],array[3]);
-    
-    
-    while(studentScan.hasNextLine()){
-      array =  studentScan.nextLine().split("/t");
-      if(array[0] instanceof String){
-        section = classes.findSection(array[0]);
-        section.enroll(student);
-      }
-    }
-    studentScan.close();
+    System.out.println(student.toString());
     return student;
   }
   
@@ -189,3 +247,4 @@ public class SRSDataAccess
     studentFile.close();
   }
 }
+
