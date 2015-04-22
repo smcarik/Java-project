@@ -92,7 +92,7 @@ public class Student extends Person
    */
   public void display()
   {
-    //Code
+    System.out.println("SSN: " + ssn + " Name: " + name + " Major: " + major + " Degree: " + degree);
   }
   /**
    * displays information about the student
@@ -100,7 +100,7 @@ public class Student extends Person
   public String toString()
   {
     //Code
-    return ssn + name + degree + major + transcript;
+    return "SSN: " + ssn + " Name: " + name + " Major: " + major + " Degree: " + degree;
   }
   /**
    * return the CourseSchedule of the student
@@ -170,5 +170,22 @@ public class Student extends Person
   {
     return null;
   }
+  /**
+  * This method sets the name of a person to a variable
+  * @param name
+  */
+ public void setName(String name)
+ {
+  this.name=name; 
+ }
+ 
+ /**
+  * this method sets the ssn of a person
+  * @param ssn
+  */
+ public void setSsn(String ssn)
+ {
+   this.ssn=ssn;
+ }
 
 }
