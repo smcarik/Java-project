@@ -5,30 +5,38 @@ public class SRSTester extends Program{
   private static Faculty faculty;
   private static CourseCatalog courseCatalog;
   private static ScheduleOfClasses scheduleOfClasses;
-  
+  private static Student student1, student2, student3;
   public void init(){
     try{
-      scheduleOfClasses = SRSDataAccess.initializeScheduleOfClasses("Fall");
+
       courseCatalog = SRSDataAccess.initializeCourseCatalog();
+      
+      scheduleOfClasses = 
+        SRSDataAccess.initializeScheduleOfClasses("Fall");
+      
       faculty = SRSDataAccess.initializeFaculty();
+      
       Student student1 = SRSDataAccess.initializeStudent("111-11-1111");
+      //student1.display();
       Student student2 = SRSDataAccess.initializeStudent("222-22-2222");
       Student student3 = SRSDataAccess.initializeStudent("333-33-3333");
-      
     }catch(Exception e){ 
       System.out.println(e.getMessage());
     }
   }
   
-  /*
-   * For now, just keeps the program of quitting.
-   */
+  
   public void run(){
+    
+    System.out.println("~~~~~~~~~~~~~~~~~~~~  THESE ARE THE COURSES  ~~~~~~~~~~~~~~~~~~~~~~~~~");
     courseCatalog.display();
+    System.out.println("~~~~~~~~~~~~~~~~~~~~  THESE ARE THE SCHEDULE  ~~~~~~~~~~~~~~~~~~~~~~~~~");
     scheduleOfClasses.display();
+    System.out.println("~~~~~~~~~~~~~~~~~~~~  THESE ARE THE FACULTY  ~~~~~~~~~~~~~~~~~~~~~~~~~");
     faculty.display();
     
   }
+  
   
   public static void main(String[] args) {
     new SRSTester().start();
