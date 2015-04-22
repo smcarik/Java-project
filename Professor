@@ -13,10 +13,10 @@ public class Professor extends Person
   
   public Professor(String name, String ssn, String title, String department)
   {
-    title = title;
-    department = department;
-    name = name;
-    ssn = ssn;
+    this.title = title;
+    this.department = department;
+    this.name = name;
+    this.ssn = ssn;
     teaches = new ArrayList<Section>();
   }
   
