@@ -12,7 +12,7 @@ public abstract class Person
   */
  public void setName(String name)
  {
-  name=name; 
+  this.name=name; 
  }
  
  /**
@@ -21,7 +21,7 @@ public abstract class Person
   */
  public void setSsn(String ssn)
  {
-   ssn=ssn;
+   this.ssn=ssn;
  }
  
  /**
@@ -53,4 +53,3 @@ public abstract class Person
   */
  public abstract String toString();
 }
- 
