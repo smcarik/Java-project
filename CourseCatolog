@@ -33,6 +33,7 @@ public class CourseCatalog extends Course
   public void addCourse(Course c)
   {
     courses.put(c.getCourseNo(),c);
+    //System.out.println("added course: " + courses.get(c.getCourseNo()));
   }
   
   /**
