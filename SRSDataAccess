@@ -155,7 +155,7 @@ public class SRSDataAccess
         
         
         //System.out.println("array[0]="+array1[0]); 
-        //System.out.println("array[1]="+array1[1]); 
+        //System.out.println("array[1]="+array1[1]); 
         //System.out.println("array[2]="+array1[2]);
         //System.out.println("array[3]="+array1[3]);
         
@@ -220,8 +220,8 @@ public class SRSDataAccess
       while(studentScan.hasNextLine()){
         array =  studentScan.nextLine().split("\t");
         if(array[0] instanceof String){
-          section = classes.findSection(array[0]);
-          section.enroll(student);
+          //section = classes.findSection(array[0]);
+          //section.enroll(student);
         }
       }
       studentScan.close();
