@@ -112,4 +112,17 @@ public class Professor extends Person
   {
     return ssn; 
   }
+   public void setName(String name)
+ {
+  this.name=name; 
+ }
+ 
+ /**
+  * this method sets the ssn of a person
+  * @param ssn
+  */
+ public void setSsn(String ssn)
+ {
+   this.ssn=ssn;
+ }
 } 
