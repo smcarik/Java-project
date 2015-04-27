@@ -16,6 +16,7 @@ public class MainFrame extends JFrame
   private JButton searchButton, close;
   private JTextArea nameResult, ssn2Result, majorResult, degreeResult;
   private JTextField ssnText;
+  private Student student;
   public MainFrame() 
   {
     super( "Main Frame" );
@@ -66,7 +67,14 @@ public class MainFrame extends JFrame
     close.addActionListener(closeItemListener);
     ActionListener findStudentItemlistener = new FindStudentItemListener();
     findStudent.addActionListener(findStudentItemlistener);
+    ActionListener displayCourseScheduleListener = new DisplayCourseScheduleListener();
+    studentSchedule.addActionListener(displayCourseScheduleListener);
+    
   }
+  
+  
+  
+  
   
   class LoginItemListner implements ActionListener
   {
@@ -96,6 +104,12 @@ public class MainFrame extends JFrame
       loggedOff.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
   }
+  
+  
+  
+  
+  
+  
   
   class CloseItemListener implements ActionListener
   {
@@ -163,7 +177,7 @@ public class MainFrame extends JFrame
         boolean checkFile = studentFile.isFile();
         if(checkFile)
         {
-          Student student = SRSDataAccess.initializeStudent(userSsn);
+          student = SRSDataAccess.initializeStudent(userSsn);
           nameResult.setText(student.getName());
           System.out.println("The bitches name is: " + student.getName());
           ssn2Result.setText(student.getSsn());
@@ -188,6 +202,47 @@ public class MainFrame extends JFrame
      }
     }
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  class DisplayCourseScheduleListener implements ActionListener
+  {
+    public void actionPerformed(ActionEvent event)
+    {
+      JInternalFrame displaySchedule = new JInternalFrame("Schedule", true, true, true, true);
+      displaySchedule.setLayout(new BorderLayout());
+      JTextField scheduleField = new JTextField();
+      displaySchedule.add(scheduleField,BorderLayout.CENTER);
+      theDesktop.add(displaySchedule);
+      displaySchedule.setVisible(true);
+      System.out.println(student.displayCourseSchedule());
+      scheduleField.setText(student.displayCourseSchedule());
+      
+      
+    }
+  }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
   
   public static void main( String[] args )
   {
