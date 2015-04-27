@@ -81,5 +81,4 @@ public class ScheduleOfClasses extends Section
      return false; 
     }
   }
-} 
- 
+}
