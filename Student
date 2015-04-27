@@ -105,9 +105,16 @@ public class Student extends Person
   /**
    * return the CourseSchedule of the student
    */
-  public void displayCourseSchedule()
+  public String displayCourseSchedule()
   {
     //Code
+    
+      String a = "";
+    for(Section s:attends){
+      String b = s.getFullSectionNo()+", ";
+      a = a + b;
+    }
+    return a;
     //run through the attends list, and for each section in there print its time and day of week
   }
   /*
@@ -166,9 +173,13 @@ public class Student extends Person
   /**
    * returns all the sections the student is enrolled in
    */
-  public String getEnrolledSections()
+  public void getEnrolledSections()
   {
-    return null;
+    for(Section s:attends)
+    {
+     System.out.println(s.toString()); 
+    }
+    
   }
   /**
   * This method sets the name of a person to a variable
