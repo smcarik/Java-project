@@ -177,8 +177,7 @@ public class Section
   public String toString()
   {
     return "Section Number: " + sectionNo + " Day of The Week: " + dayOfWeek + " Time: "+ timeOfDay + 
-      " Room Number: " + room + " Seating Capacity: " + seatingCapacity + " Instructor: " + instructor + 
-      " Represented Course: " + representedCourse;
+      " Room Number: " + room + " Seating Capacity: " + seatingCapacity + " Instructor: " + instructor;
   }
   /**
    * gets the section number and course number
@@ -198,6 +197,9 @@ public class Section
    **/
   public void enroll(Student student)
   {
+    
+    enrolledStudents.put(student.getSsn(), student);
+    
     //code  uses enrollment status,  finish when enrollment status enum class finished.
   }
   /**
@@ -206,7 +208,7 @@ public class Section
    **/
   public Boolean confirmSeatAvailibility()
   {
-    /*create enrolledStudents map
+    /*
      * find size of map
      * Then if size of map is less then seatingCapacity
      * return there are seats are available
@@ -236,6 +238,7 @@ public class Section
   public void display()
   {
     String potato = this.getFullSectionNo();
+    
     System.out.println(potato);
     
   }
