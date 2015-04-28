@@ -1,7 +1,7 @@
 import java.util.*;
 /**
  * class ScheduleOfClasses
- * sets and returns semester of class schedule as well as finding or adding a section to the class schedule
+ * sets and returns semester of class schedule as well as finding or adding a section to the class schedule!
  */
 public class ScheduleOfClasses extends Section
 {
