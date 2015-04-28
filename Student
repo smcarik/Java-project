@@ -123,7 +123,7 @@ public class Student extends Person
    */
   public void addSection(Section sectionNo)
   {
-    if(sectionNo.confirmSeatAvailibility())
+    if(sectionNo.confirmSeatAvailibility() && !sectionNo.hasPrerequisites() && !attends.contains(sectionNo))
     {
       attends.add(sectionNo);
     }
