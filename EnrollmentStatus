@@ -1,5 +1,5 @@
 /**
- * sets the enrollment status of students  **/ public enum EnrollmentStatus{
+ * sets the enrollment status of students!  **/ public enum EnrollmentStatus{
   success("Enrollment successful"), secFull("Enrollment Failed: Section is full"),preReq("Enrollment Failed: prerequisites are not satisfied. "),prevEnroll("Enrollment Failed: Student was Previously Enrolled.");
   
   private String value; //Enrollment Status value
@@ -19,4 +19,3 @@
   }
 }
 
- 
