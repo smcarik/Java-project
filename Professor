@@ -1,6 +1,6 @@
 /**
  * This class sets the title and department of the professor, along with displaying the info, and making sure the
- * professor agrees to teach a certain section
+ * professor agrees to teach a certain section!
  */
 import java.util.*;
 
