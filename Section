@@ -1,6 +1,6 @@
 import java.util.*;
 /**
- * this is a class that creates sections
+ * this is a class that creates sections!
  **/
 public class Section extends Course
 {
