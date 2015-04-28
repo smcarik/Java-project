@@ -1,7 +1,7 @@
 import java.util.*;
 /**
  * class ScheduleOfClasses
- * sets and returns semester of class schedule as well as finding or adding a section to the class schedule!
+ * sets and returns semester of class schedule as well as finding or adding a section to the class schedule
  */
 public class ScheduleOfClasses extends Section
 {
@@ -36,7 +36,7 @@ public class ScheduleOfClasses extends Section
    */
   public Section getSectionsOffered()
   {
-    //figure the fuck out what code to put here and put it in at some other point in time, because right now i cant thingk straight and simply dont give a flying fuck anmore
+    //figure out what code to put here and put it in at some other point in time
     return null;
   }
   /**
@@ -82,3 +82,4 @@ public class ScheduleOfClasses extends Section
     }
   }
 }
+ 
