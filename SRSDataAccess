@@ -25,7 +25,7 @@ public class SRSDataAccess
   
   
   /*
-   * reads data in from schedule file and populates schedule map
+   * reads data in from schedule file and populates schedule map!
    */
   public static ScheduleOfClasses initializeScheduleOfClasses(String semester)
   {
