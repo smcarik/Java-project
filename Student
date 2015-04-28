@@ -147,7 +147,7 @@ public class Student extends Person
      System.out.println("You are not enrolled in that section"); 
     }
   }
-  public boolean isEnrolledIn(String sectionNo)
+  public boolean isEnrolledIn(Section sectionNo)
   {
    if(attends.contains(sectionNo))
    {
@@ -155,7 +155,7 @@ public class Student extends Person
    }
    else
    {
-    return false; 
+    return false;
    }
   }
   public boolean isCurrentlyEnrolledInSimilar(Section sectionNo)
