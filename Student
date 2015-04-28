@@ -1,6 +1,6 @@
 import java.util.*;
 /**
- * class Student extends class Person
+ * class Student extends class Person!
  * Makes a new student object and is able to set and get their major, degree, transcript, as well as check enrolled sections
  */
 public class Student extends Person
