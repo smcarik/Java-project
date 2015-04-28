@@ -3,7 +3,7 @@
  * and adds the section.
  */
 import java.util.*;
-public class Course
+public class Course 
 {
   private double credits;
   private String courseName;
@@ -105,7 +105,7 @@ public class Course
    */
   public Boolean hasPrerequisites()
   {
-    if (prerequisites.size() == 0 )
+    if (prerequisites.size() == 0)
     {
       return false;
     }
