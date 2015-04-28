@@ -1,5 +1,5 @@
 /**
- * This class sets and gets both the name and the ssn of a person, and then displays that info
+ * This class sets and gets both the name and the ssn of a person, and then displays that info!
  */
 public abstract class Person
 {
