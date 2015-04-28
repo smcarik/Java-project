@@ -28,7 +28,7 @@ public class SRSTester extends Program{
   
   public void run(){
     
-    System.out.println("~~~~~~~~~~~~~~~~~~~~  THESE ARE THE COURSES  ~~~~~~~~~~~~~~~~~~~~~~~~~");
+    System.out.println("~~~~~~~~~~~~~~~~~~~~~  THESE ARE THE COURSES  ~~~~~~~~~~~~~~~~~~~~~~~~~");
     courseCatalog.display();
     System.out.println("~~~~~~~~~~~~~~~~~~~~  THESE ARE THE SCHEDULE  ~~~~~~~~~~~~~~~~~~~~~~~~~");
     scheduleOfClasses.display();
