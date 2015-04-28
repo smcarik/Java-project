@@ -1,6 +1,6 @@
 import java.util.*;
 /**
- * class transcript makes a transcript for a student!
+ * class transcript makes a transcript for a student
  */
 public class Transcript
 {
@@ -31,6 +31,9 @@ public class Transcript
    * @param course the course to decide if completed
    * @return return true if it was completed, otherwise false.
    **/
+  
+  GUYS THIS IS SCREWED UP, I CANT FIGURE IT UOUT BUT WE CANT SEARCH AN ARRAY OF TRANSCRIPTENTRIES WITH A COURSE
+  
   public Boolean verifyCompletion(Course course)
   {
     if(transcriptEntries.contains(course)){
