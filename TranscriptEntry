@@ -5,7 +5,7 @@ public class TranscriptEntry extends Transcript
 {
   /**
    * declares variables grade, student and transcript as string
-   * declares variable section as int
+   * declares variable section as int!
    */
   private String grade;
   private Student student;
