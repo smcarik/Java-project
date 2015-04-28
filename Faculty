@@ -1,7 +1,7 @@
 import java.util.*;
 /**
  * This class extends Professor.
- * This class adds and finds a professor, and makes sure the position is open
+ * This class adds and finds a professor, and makes sure the position is open!
  */
 public class Faculty
 {
