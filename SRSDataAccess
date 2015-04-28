@@ -3,11 +3,11 @@ import java.util.*;
 
 public class SRSDataAccess
 {
-  static File scheduleFileName = new File("dat/SoC_SP2005.dat");
-  static File facultyFileName = new File("dat/Faculty.dat");
-  static File assignmentsFileName = new File("dat/TeachingAssignments.dat");
-  static File courseFileName = new File("dat/CourseCatalog.dat");
-  static File prereqFileName = new File("dat/Prerequisites.dat");
+  static File scheduleFileName = new File("SoC_SP2005.dat");
+  static File facultyFileName = new File("Faculty.dat");
+  static File assignmentsFileName = new File("TeachingAssignments.dat");
+  static File courseFileName = new File("CourseCatalog.dat");
+  static File prereqFileName = new File("Prerequisites.dat");
   static Scanner facultyScan, scheduleScan, assignmentsScan, courseScan, prereqScan, studentScan;
   static ScheduleOfClasses classes;
   
@@ -205,7 +205,7 @@ public class SRSDataAccess
     Student student = new Student();
     try
     {
-      Scanner studentScan = new Scanner(new File("dat/" + ssn + ".dat"));
+      Scanner studentScan = new Scanner(new File(ssn + ".dat"));
       String line = studentScan.nextLine();
       String array[] = line.split("\t");
       //System.out.println("THE LINE: " + line);
@@ -251,4 +251,3 @@ public class SRSDataAccess
     studentFile.close();
   }
 }
-
