@@ -34,10 +34,14 @@ public class ScheduleOfClasses extends Section
    * returns the sections offered of a course
    * @return sectionsOffered
    */
-  public Section getSectionsOffered()
+  public ArrayList<Section> getSectionsOffered()
   {
-    //figure out what code to put here and put it in at some other point in time
-    return null;
+    ArrayList<Section> result = new ArrayList<Section>();
+    for(String s : sectionsOffered.keySet())
+    {
+      result.add(sectionsOffered.get(s));
+    }
+    return result;
   }
   /**
    * displays information about the class schedule
@@ -82,4 +86,3 @@ public class ScheduleOfClasses extends Section
     }
   }
 }
- 
