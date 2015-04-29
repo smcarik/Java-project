@@ -13,13 +13,15 @@ public class MainFrame extends JFrame
   private JDesktopPane theDesktop;
   private JPanel northPanel, southPanel, dropNorthPanel, dropSouthPanel;
   private JInternalFrame loginFrame, loggedOff, findStudentFrame, displaySchedule, addSection, dropSection, viewTranscript;
-  private String userSsn;
-  private JButton searchButton, close, addSectionButton, viewCatalogButton, closeSectionButton, dropSectionButton,
-    dropCatalogButton,dropCloseButton;
-  private JTextArea nameResult, ssn2Result, majorResult, degreeResult;
-  private JTextField ssnText, addSectionText, resultsText, dropSectionText, dropResultsText;
+  private String userSsn, facultySsn;
+  private JButton searchButton, addSectionButton, viewCatalogButton,  dropSectionButton,
+    dropCatalogButton, facultySearchButton;
+  private JTextArea nameResult, ssn2Result, majorResult, degreeResult, resultsText, dropResultsText, 
+    facultyDepartmentResult, facultySsn2Result, facultyNameResult,  facultyTitleResult;
+  private JTextField ssnText, addSectionText,dropSectionText, facultySsnText;
   private Student student;
   private ScheduleOfClasses classes;
+  private Faculty fucklety;
   public MainFrame() 
   {
     super( "Main Frame" );
@@ -78,9 +80,12 @@ public class MainFrame extends JFrame
     dropSection.addActionListener(dropSectionListener);
     ActionListener viewTranscriptListener = new ViewTranscriptListener();
     viewTranscript.addActionListener(viewTranscriptListener);
+    ActionListener findFacultyItemListener = new FindFacultyItemListener();
+    findProfessor.addActionListener(findFacultyItemListener);
     
     SRSDataAccess.initializeCourseCatalog();
     classes = SRSDataAccess.initializeScheduleOfClasses("Spring");
+    fucklety = SRSDataAccess.initializeFaculty();
     
   }
   
@@ -113,6 +118,10 @@ public class MainFrame extends JFrame
       loggedOff.pack();
       theDesktop.add(loggedOff);
       loggedOff.setVisible(true);
+      try{
+      SRSDataAccess.persistStudent(student);
+      }
+      catch(FileNotFoundException e){  e.printStackTrace();}
       loggedOff.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
   }
@@ -150,7 +159,7 @@ public class MainFrame extends JFrame
       JLabel degree = new JLabel("Degree: ");
       degreeResult = new JTextArea();
       searchButton = new JButton("Search");
-      close = new JButton("Close");
+      
       //ActionListener closeButtonItemlistener = new CloseButtonItemListener();
       //close.addActionListener(findStudentItemlistener);
       
@@ -170,12 +179,12 @@ public class MainFrame extends JFrame
       findStudentFrame.add(degree);
       findStudentFrame.add(degreeResult);
       findStudentFrame.add(searchButton);
-      findStudentFrame.add(close);
+      
       findStudentFrame.pack();
       findStudentFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
       LoginHandler2 handler2 = new LoginHandler2();
       searchButton.addActionListener(handler2);
-      close.addActionListener(handler2);
+      
       
       
     }
@@ -207,10 +216,7 @@ public class MainFrame extends JFrame
             nameResult.setText("STUDENT NOT FOUND");
           }
         }
-        else if(event.getSource() == close)
-        {
-          System.exit(0);
-        }
+        
       }
     }
   }
@@ -264,7 +270,7 @@ public class MainFrame extends JFrame
       northPanel.add(addSectionButton);
       addSection.add(northPanel, BorderLayout.NORTH);
       
-      resultsText = new JTextField();
+      resultsText = new JTextArea();
       resultsText.setEditable(false);
       addSection.add(resultsText, BorderLayout.CENTER);
       
@@ -273,13 +279,15 @@ public class MainFrame extends JFrame
       viewCatalogButton = new JButton("View Catalog");
       southPanel.add(viewCatalogButton);
       
-      closeSectionButton = new JButton("Close Section");
-      southPanel.add(closeSectionButton);
+      
       addSection.add(southPanel, BorderLayout.SOUTH);
       
       addSection.setVisible(true);
       addSection.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
       addSection.pack();
+      
+      ViewCatalogListener viewCatalogListener = new ViewCatalogListener();
+      viewCatalogButton.addActionListener(viewCatalogListener);
       
       AddSectionListener2 addSectionListener2 = new AddSectionListener2();
       addSectionButton.addActionListener(addSectionListener2);
@@ -293,16 +301,46 @@ public class MainFrame extends JFrame
       if(event.getSource()==addSectionButton)
       {
         String userSectionNo = addSectionText.getText();
-        if(classes.findSection(userSectionNo)!=null)
+        Section t = classes.findSection(userSectionNo);
+        if(student.isEnrolledIn(t))
+        {
+          resultsText.setText("The student is already enrolled in this section");
+        }
+        else if(!t.confirmSeatAvailibility())
+        {
+          resultsText.setText("The seating capacity is full for this course");
+        }
+        else if(classes.findSection(userSectionNo)!=null)
         {
           Section s = classes.findSection(userSectionNo);
           student.addSection(s);
           resultsText.setText("The section has been added to the student's list of classes!");
         }
+        
         else{
           resultsText.setText("This section was not found!");
         }
         
+        
+      }
+    }
+  }
+  
+  class ViewCatalogListener implements ActionListener
+  {
+    public void actionPerformed(ActionEvent event)
+    {
+      if(event.getSource()==viewCatalogButton)
+      {
+        ArrayList<Section> result = new ArrayList<Section>();
+        result = classes.getSectionsOffered();
+        Iterator<Section> iterator1 = result.iterator();
+        String s = "";
+        while (iterator1.hasNext())
+        {
+          s += iterator1.next().toString() + "\n";
+        }
+        resultsText.setText(s);
         
       }
     }
@@ -324,7 +362,7 @@ public class MainFrame extends JFrame
       dropNorthPanel.add(dropSectionButton);
       dropSection.add(dropNorthPanel, BorderLayout.NORTH);
       
-      dropResultsText = new JTextField();
+      dropResultsText = new JTextArea();
       dropSection.add(dropResultsText, BorderLayout.CENTER);
       
       dropSouthPanel = new JPanel();
@@ -332,13 +370,15 @@ public class MainFrame extends JFrame
       dropCatalogButton = new JButton("View Catalog");
       dropSouthPanel.add(dropCatalogButton);
       
-      dropCloseButton = new JButton("Close Section");
-      dropSouthPanel.add(dropCloseButton);
+      
       dropSection.add(dropSouthPanel, BorderLayout.SOUTH);
       
       dropSection.setVisible(true);
       dropSection.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
       dropSection.pack();
+      
+      ViewCatalogListener2 viewCatalogListener2 = new ViewCatalogListener2();
+      dropCatalogButton.addActionListener(viewCatalogListener2);
       
       DropSectionListener2 dropitlikeitshotSectionListener2 = new DropSectionListener2();
       dropSectionButton.addActionListener(dropitlikeitshotSectionListener2);
@@ -371,6 +411,25 @@ public class MainFrame extends JFrame
     }
   }
   
+  class ViewCatalogListener2 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent event)
+    {
+      if(event.getSource()==dropCatalogButton)
+      {
+        ArrayList<Section> result = new ArrayList<Section>();
+        result = classes.getSectionsOffered();
+        Iterator<Section> iterator1 = result.iterator();
+        String s = "";
+        while (iterator1.hasNext())
+        {
+          s += iterator1.next().toString() + "\n";
+        }
+        dropResultsText.setText(s);
+        
+      }
+    }
+  }
   
   
   class ViewTranscriptListener implements ActionListener
@@ -383,7 +442,76 @@ public class MainFrame extends JFrame
     }
   }
   
-  
+    class FindFacultyItemListener implements ActionListener
+  {
+    public void actionPerformed(ActionEvent event)
+    {
+      JInternalFrame findFacultyFrame = new JInternalFrame("Find Faculty", true, true, true, true);
+      findFacultyFrame.setLayout(new GridLayout(6, 2, 0, 10));
+      theDesktop.add(findFacultyFrame);
+      findFacultyFrame.setVisible(true);
+      JLabel facultySsn = new JLabel("Enter SSN: ");
+      facultySsnText = new JTextField(11);
+      JLabel facultyName = new JLabel("Name: ");
+      facultyNameResult = new JTextArea();
+      JLabel facultySsn2 = new JLabel("SSN: ");
+      facultySsn2Result = new JTextArea();
+      JLabel facultyTitle = new JLabel("Title: ");
+      facultyTitleResult = new JTextArea();
+      JLabel facultyDepartment = new JLabel("Department: ");
+      facultyDepartmentResult = new JTextArea();
+      facultySearchButton = new JButton("Search");
+      
+      //ActionListener closeButtonItemlistener = new CloseButtonItemListener();
+      //close.addActionListener(findStudentItemlistener);
+      
+      facultyNameResult.setEditable(false);
+      facultySsn2Result.setEditable(false);
+      facultyTitleResult.setEditable(false);
+      facultyDepartmentResult.setEditable(false);
+      
+      findFacultyFrame.add(facultySsn);
+      findFacultyFrame.add(facultySsnText);
+      findFacultyFrame.add(facultyName);
+      findFacultyFrame.add(facultyNameResult);
+      findFacultyFrame.add(facultySsn2);
+      findFacultyFrame.add(facultySsn2Result);
+      findFacultyFrame.add(facultyTitle);
+      findFacultyFrame.add(facultyTitleResult);
+      findFacultyFrame.add(facultyDepartment);
+      findFacultyFrame.add(facultyDepartmentResult);
+      findFacultyFrame.add(facultySearchButton);
+      
+      findFacultyFrame.pack();
+      findFacultyFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+      LoginHandler3 handler3 = new LoginHandler3();
+      facultySearchButton.addActionListener(handler3);
+      
+      
+      
+    }
+    private class LoginHandler3 implements ActionListener 
+    {
+      public void actionPerformed( ActionEvent event )
+      {
+        if ( event.getSource() == facultySearchButton )
+        {
+          facultySsn = facultySsnText.getText();
+          Professor oak = fucklety.findProfessor(facultySsn);
+          String name5 = oak.getName();
+          String ssn5 = facultySsn;
+          String title5 = oak.getTitle();
+          String department5 = oak.getDepartment();
+          facultyNameResult.setText(name5);
+          facultySsn2Result.setText(ssn5);
+          facultyTitleResult.setText(title5);
+          facultyDepartmentResult.setText(department5);
+          
+          }
+        }
+        
+      }
+    }
   
   
   
