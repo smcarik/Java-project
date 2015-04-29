@@ -38,7 +38,7 @@ public class Faculty
    */
   public Professor findProfessor(String ssn) 
   {
-    return (Professor) professors.get(ssn);
+    return professors.get(ssn);
   }
   /**
    * This method checks to see if the professor is empty, as in number of classes they teach
