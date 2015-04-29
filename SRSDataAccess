@@ -219,10 +219,10 @@ public class SRSDataAccess
       
       while(studentScan.hasNextLine()){
         String[] array1 =  studentScan.nextLine().split("\t");
-        System.out.println(array1[0]);
-          section = classes.findSection(array1[0]);
-          section.display();
-          if(section.confirmSeatAvailibility())
+       System.out.println(array1[0]);
+         section = classes.findSection(array1[0]);
+         section.display();
+         if(section.confirmSeatAvailibility())
             section.enroll(student);
           student.addSection(section);
           student.getEnrolledSections();
@@ -247,7 +247,8 @@ public class SRSDataAccess
     throws FileNotFoundException{
     
     PrintWriter studentFile = new PrintWriter(student.getSsn() + ".dat");
-    studentFile.print(student);
+    studentFile.println(student.getSsn() + "\t" + student.getName() + "\t" + student.getMajor() + "\t" + student.getDegree());
+    studentFile.print(student.getEnrolledSections());
     studentFile.close();
   }
 }
