@@ -173,13 +173,15 @@ public class Student extends Person
   /**
    * returns all the sections the student is enrolled in
    */
-  public void getEnrolledSections()
+  public String getEnrolledSections()
   {
+    String d = "";
     for(Section s:attends)
     {
-     System.out.println(s.toString()); 
+      String c = s.getFullSectionNo()+", ";
+      d = d + c;
     }
-    
+    return d;
   }
   /**
   * This method sets the name of a person to a variable
