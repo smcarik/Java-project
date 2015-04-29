@@ -177,7 +177,7 @@ public class Section extends Course
   public String toString()
   {
     return "Section Number: " + sectionNo + " Day of The Week: " + dayOfWeek + " Time: "+ timeOfDay + 
-      " Room Number: " + room + " Seating Capacity: " + seatingCapacity + " Instructor: " + instructor;
+      " Room Number: " + room + " Seating Capacity: " + seatingCapacity;
   }
   /**
    * gets the section number and course number
@@ -214,7 +214,7 @@ public class Section extends Course
      * return there are seats are available
      * else return that there are no seats available
      */
-    if(enrolledStudents.size()<=seatingCapacity)
+    if(enrolledStudents.size()<seatingCapacity)
     {
      return true; 
     }
