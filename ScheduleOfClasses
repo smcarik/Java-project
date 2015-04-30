@@ -6,7 +6,7 @@ import java.util.*;
 public class ScheduleOfClasses extends Section
 {
   /**
-   * declared variable semester
+   * declared variables
    */
   private String semester;
   private HashMap<String, Section> sectionsOffered;
@@ -44,7 +44,7 @@ public class ScheduleOfClasses extends Section
     return result;
   }
   /**
-   * displays information about the class schedule
+   * displays the full section number of all classes in the sectionsOffered array
    */
   public void display()
   {
@@ -55,14 +55,15 @@ public class ScheduleOfClasses extends Section
     }
   }
   /**
-   * adds a course section to the class schedule
+   * adds a course section to the sectionsOffered array which contains all sections and courses
    */
   public void addSection(String fullSection, Section section)
   {
     sectionsOffered.put(fullSection, section);
   }
   /**
-   * finds the sections of a certain course
+   * finds the section of a certain course
+   * @param fullSection this is the full section number
    */
   public Section findSection(String fullSection)
   {
