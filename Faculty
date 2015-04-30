@@ -1,69 +1,53 @@
-/**
- * CourseCatalog extends course.
- * This class adds new courses, finds a course given a course number, along with 
- * checking to see if a class is empty!
- */
-
 import java.util.*;
-
-public class CourseCatalog extends Course
+/**
+ * This class extends Professor.
+ * This class adds and finds a professor, and makes sure the position is open!
+ */
+public class Faculty
 {
-  private Course course;
-  private HashMap<String, Course> courses;
+  Map<String, Professor> professors;
+  private Professor professor;
   
-  public CourseCatalog()
+  public Faculty()
   {
-    courses = new HashMap<String, Course>();
+    professors = new HashMap<String, Professor>();
   }
   
   /**
-   * displays the info about the course you are looking up
+   * This method displays any info about a professor
    */
   public void display()
   {
-    for(Course c : courses.values()){
-      c.display();
+    for (Professor p : professors.values()) 
+    {
+      p.display();
       System.out.println();
     }
   }
-  
-  /**
-   * This adds a new course, calling on the course class
+    /**
+     * this method adds a new professor to the list of professors
    */
-  public void addCourse(Course c)
+  public void addProfessor(Professor proffesor)
   {
-    courses.put(c.getCourseNo(),c);
-    //System.out.println("added course: " + courses.get(c.getCourseNo()));
+    professors.put(proffesor.getSsn(),proffesor);
   }
   
   /**
-   * This method takes a parameter courseNo and if the course number entered is equal to the Courses course number,
-   * then it returns the course name
-   * @param courseNo
-   * @return courseName
+   * Given an ssn, this method checks for a professor and finds one
+   * @param ssn
    */
-  public Course findCourse(String courseNo)
+  public Professor findProfessor(String ssn) 
   {
-    if(courses.containsKey(courseNo))
-    {
-    return courses.get(courseNo);
-    }
-    else
-    {
-     return null; 
-    }
+    return professors.get(ssn);
   }
-  
   /**
-   * This method checks to see if the class is empty or not
+   * This method checks to see if the professor is empty, as in number of classes they teach
    */
-  public boolean isEmpty()
+  public Boolean isEmpty()
   {
-    if(courses.isEmpty()){
+    if(professors.isEmpty())
       return true;
-    }
-    else{
+    else
       return false;
-    }
   }
 }
