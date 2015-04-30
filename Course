@@ -1,6 +1,6 @@
 /**
  * This class sets the course number, name, and number of credits, noting if the course needs prerequisites
- * and adds the section!
+ * and adds the section
  */
 import java.util.*;
 public class Course 
