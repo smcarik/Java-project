@@ -178,7 +178,7 @@ public class Student extends Person
     String d = "";
     for(Section s:attends)
     {
-      String c = s.getFullSectionNo()+", ";
+      String c = s.getFullSectionNo()+"\t";
       d = d + c;
     }
     return d;
