@@ -10,7 +10,9 @@ public class CourseCatalog extends Course
 {
   private Course course;
   private HashMap<String, Course> courses;
-  
+  /**
+   * The constructor takes no prameters and initializes the courses into a HashMap
+   */
   public CourseCatalog()
   {
     courses = new HashMap<String, Course>();
