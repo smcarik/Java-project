@@ -11,6 +11,14 @@ public class Professor extends Person
   
   private ArrayList<Section> teaches;
   
+  
+  /**
+   * The constructor takes parameters for the name, ssn, title, and department of the professor
+   * @param name the name of the professor
+   * @param ssn the social security number of the professor
+   * @param title the title the professor has
+   * @param department the department the professor works in
+   */
   public Professor(String name, String ssn, String title, String department)
   {
     this.title = title;
