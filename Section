@@ -172,7 +172,7 @@ public class Section extends Course
   }
   /**
    * turns the information into a string
-   * @return returns what the string will be
+   * @return returns information of section
    **/
   public String toString()
   {
@@ -187,7 +187,7 @@ public class Section extends Course
   {
     String course = this.getRepresentedCourse();
     //String courseNo = course.getCourseNo();
-    String fullSectNo = course + "-" + this.getSectionNo();
+    String fullSectNo = course + " - " + this.getSectionNo();
     return fullSectNo;
 
   }
@@ -204,7 +204,7 @@ public class Section extends Course
   }
   /**
    * checks if there are seats available
-   * @return returns if there are seats available
+   * @return true or false if there are seats available
    **/
   public Boolean confirmSeatAvailibility()
   {
@@ -232,8 +232,8 @@ public class Section extends Course
     return enrolledStudents.size();
   }
   /**
-   * displays the information
-   * @return
+   * displays the full section number of a section
+   * 
    **/
   public void display()
   {
@@ -244,7 +244,7 @@ public class Section extends Course
   }
   /**
    * displays the roster of students
-   * @return roster
+   * @return enrolled students
    **/
   public void displayStudentRoster()
   {
@@ -285,8 +285,8 @@ public class Section extends Course
     // I dont know how to add the grade to the map, given that the value type is TranscriptEntry
   }
   /**
-   * checks what course this is a section of
-   * @param course name of course
+   * checks too see if this section is offered as a user input course
+   * @param course
    **/
   public Boolean isSectionOf(Course course)
   {
