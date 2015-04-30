@@ -1,6 +1,6 @@
 import java.util.*;
 /**
- * this is a class that creates sections!
+ * this is a class that creates sections as well as holds arrays for the students enrolled in a certain section
  **/
 public class Section extends Course
 {
@@ -16,8 +16,7 @@ public class Section extends Course
   private HashMap<String, Student> enrolledStudents;
   private HashMap<Student, TranscriptEntry> assignedGrades;
   /**
-   * sets the number that represents the section
-   *@param sectionNo is the number assigned to the section
+   * Constructor that initializes all variables and maps
    **/
   public Section()
   {
@@ -32,7 +31,15 @@ public class Section extends Course
     enrolledStudents = new HashMap<String, Student>();
     assignedGrades = new HashMap<Student, TranscriptEntry>();
   }
-  
+  /**
+   * Constructor that initializes all variables to the given paramater values as well as the two maps
+   * @param sectionNo for the section number of the course
+   * @param dayOfWeek for the day of the week class is to be held
+   * @param timeOfDay for the time of day the class is to be held
+   * @param room for the room the class is to be held
+   * @param seatingCapacity for the seating capacity of the class
+   */
+
   public Section(int sectionNo, String dayOfWeek, String timeOfDay,
                  String room, int seatingCapacity)
   
@@ -46,6 +53,10 @@ public class Section extends Course
     assignedGrades = new HashMap<Student, TranscriptEntry>();
     
   }
+  /**
+   * this sets a section number to the user given section number
+   * @param sectionNo
+   */
   public void setSectionNo(int sectionNo)
   {
     this.sectionNo = sectionNo;
@@ -171,8 +182,8 @@ public class Section extends Course
     return offeredIn;
   }
   /**
-   * turns the information into a string
-   * @return returns information of section
+   * turns the sectinNo, dayOfWeek, timeOfDay, room, and seatingCapacity into a string and returns it
+   * @return sectionNo, dayOfWeek, timeOfDay, room, seatingCapacity
    **/
   public String toString()
   {
@@ -181,7 +192,7 @@ public class Section extends Course
   }
   /**
    * gets the section number and course number
-   * @return returns a string with the course number and the section number
+   * @return the full section number of a course
    **/
   public String getFullSectionNo()
   {
@@ -200,7 +211,7 @@ public class Section extends Course
     
     enrolledStudents.put(student.getSsn(), student);
     
-    //code  uses enrollment status,  finish when enrollment status enum class finished.
+   
   }
   /**
    * checks if there are seats available
@@ -208,7 +219,7 @@ public class Section extends Course
    **/
   public Boolean confirmSeatAvailibility()
   {
-    /*
+    /**
      * find size of map
      * Then if size of map is less then seatingCapacity
      * return there are seats are available
@@ -243,8 +254,7 @@ public class Section extends Course
     
   }
   /**
-   * displays the roster of students
-   * @return enrolled students
+   * displays the roster of students from the enrolledStudents array
    **/
   public void displayStudentRoster()
   {
