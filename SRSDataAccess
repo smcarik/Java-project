@@ -1,6 +1,10 @@
 import java.io.*;
 import java.util.*;
 
+/**
+ * This class instantiates the .dat files and then initializes all of the information
+ */
+
 public class SRSDataAccess
 {
   static File scheduleFileName = new File("SoC_SP2005.dat");
@@ -26,6 +30,8 @@ public class SRSDataAccess
   
   /*
    * reads data in from schedule file and populates schedule map!
+   * @param semester 
+   * @return classes the schedule of classes available
    */
   public static ScheduleOfClasses initializeScheduleOfClasses(String semester)
   {
@@ -69,7 +75,10 @@ public class SRSDataAccess
   
   
   
-  
+  /**
+   * This method reads data in from course catalog file
+   * @return cat
+   */
   public static CourseCatalog initializeCourseCatalog()
   {
     Course course;
@@ -177,7 +186,11 @@ public class SRSDataAccess
   
   
   
-  
+  /**
+   * reads in data from a student file and populates the student map
+   * @param ssn
+   * @return student
+   */
   public static Student initializeStudent(String ssn)
   {
     
