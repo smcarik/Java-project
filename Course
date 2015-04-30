@@ -18,7 +18,12 @@ public class Course
     prerequisites = new ArrayList<Course>();
     offeredAsSection = new ArrayList<Section>();
   }
-  
+  /**
+   * This constructor initializes the course number, course name, and credits and creates two new Arraylists
+   * @param courseNo number of the course
+   * @param courseName name of the course
+   * @param credits number of credits the class is good for
+   */
   public Course(String courseNo, String courseName, double credits)
   {
     this.credits = credits;
@@ -27,8 +32,10 @@ public class Course
     prerequisites = new ArrayList<Course>();
     offeredAsSection = new ArrayList<Section>();
   }
-  
-  //@param courseNo enter the course number that you are setting
+  /**
+   * This method sets the course number 
+   * @param courseNo enter the course number that you are setting
+   */
   public void setCourseNo(String courseNo)
   {
     this.courseNo = courseNo;
@@ -42,8 +49,10 @@ public class Course
   {
     return courseNo;
   }
-  
-  //@param courseName enter the name of the course you are setting
+  /**
+   * This method sets the course name
+   * @param courseName enter the name of the course you are setting
+   */
   public void setCourseName(String courseName)
   {
     this.courseName = courseName;
@@ -57,8 +66,10 @@ public class Course
   {
     return courseName;
   }
-  
-  //@param credits enter the number of credits the course is worth
+  /**
+   * This method sets the number of credits a class is worth
+   * @param credits enter the number of credits the course is worth
+   */
   public void setCredits(double credits)
   {
     this.credits = credits;
@@ -74,7 +85,8 @@ public class Course
   }
   
   /**
-   * displays information about the class
+   * displays the course number, course name, the number of credits it is worth, and the prerequisites required
+   * to take the class
    * @ return something
    */
     public void display()
@@ -94,6 +106,7 @@ public class Course
   
   /**
    * this method adds the prerequisites of the class, if there are any
+   * @param prereq a prerequisite that msut be fulfilled to take a class
    */
   public void addPrerequisite(Course prereq)
   {
@@ -126,6 +139,10 @@ public class Course
   
   /**
    * schedules the section by adding it to the schedule
+   * @param day the days the section is offered
+   * @param time the time the section is offered
+   * @param room the room the section will be taught in
+   * @param capacity the seating capacity of the section
    */
   public void scheduleSection(String day, String time, String room, int capacity)
   {
@@ -134,6 +151,7 @@ public class Course
   }
   /**
    * adds the section to the class schedule
+   * @param section the section to be added to the ArrayList offeredAsSection
    */
  public void addSection(Section section)
   {
