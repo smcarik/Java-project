@@ -160,8 +160,7 @@ public class MainFrame extends JFrame
       degreeResult = new JTextArea();
       searchButton = new JButton("Search");
       
-      //ActionListener closeButtonItemlistener = new CloseButtonItemListener();
-      //close.addActionListener(findStudentItemlistener);
+    
       
       nameResult.setEditable(false);
       ssn2Result.setEditable(false);
@@ -200,7 +199,7 @@ public class MainFrame extends JFrame
           {
             student = SRSDataAccess.initializeStudent(userSsn);
             nameResult.setText(student.getName());
-            //System.out.println("The student's name is: " + student.getName());
+           
             ssn2Result.setText(student.getSsn());
             degreeResult.setText(student.getDegree());
             majorResult.setText(student.getMajor());
@@ -208,8 +207,7 @@ public class MainFrame extends JFrame
           }
           else
           {
-            //code 
-            //System.out.println("This would have worked if we had a tacher to help us");
+           
             ssn2Result.setText("ERROR");
             degreeResult.setText("ERROR");
             majorResult.setText("ERROR");
@@ -241,7 +239,7 @@ public class MainFrame extends JFrame
       
       JTextField scheduleField = new JTextField();
       
-//      System.out.println(student.displayCourseSchedule());
+
       scheduleField.setText(student.displayCourseSchedule());
       scheduleField.setEditable(false);
       displaySchedule.add(scheduleField,BorderLayout.CENTER);
@@ -302,7 +300,11 @@ public class MainFrame extends JFrame
       {
         String userSectionNo = addSectionText.getText();
         Section t = classes.findSection(userSectionNo);
-        if(student.isEnrolledIn(t))
+        if (classes.findSection(userSectionNo)==null)
+        {
+        resultsText.setText("This section was not found!");
+        }
+        else if(student.isEnrolledIn(t))
         {
           resultsText.setText("The student is already enrolled in this section");
         }
@@ -316,12 +318,7 @@ public class MainFrame extends JFrame
           student.addSection(s);
           resultsText.setText("The section has been added to the student's list of classes!");
         }
-        
-        else{
-          resultsText.setText("This section was not found!");
-        }
-        
-        
+
       }
     }
   }
@@ -392,12 +389,12 @@ public class MainFrame extends JFrame
     {
       if(event.getSource()==dropSectionButton)
       {
-        //System.out.println("++++++++++++++++++++++");
+     
         String userSectionNo = dropSectionText.getText();
         Section s = classes.findSection(userSectionNo);
         if(student.isEnrolledIn(s))
         {
-          System.out.println("++++++++++++++++++++++");
+          
           
           student.dropSection(s);
           dropResultsText.setText("This section has been dropped like it is hot from the student's list of classes!");
@@ -462,8 +459,7 @@ public class MainFrame extends JFrame
       facultyDepartmentResult = new JTextArea();
       facultySearchButton = new JButton("Search");
       
-      //ActionListener closeButtonItemlistener = new CloseButtonItemListener();
-      //close.addActionListener(findStudentItemlistener);
+     
       
       facultyNameResult.setEditable(false);
       facultySsn2Result.setEditable(false);
