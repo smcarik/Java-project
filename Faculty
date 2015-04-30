@@ -8,6 +8,9 @@ public class Faculty
   Map<String, Professor> professors;
   private Professor professor;
   
+  /**
+   * The constructor takes no parameters and the initializes the professors into a HashMap
+   */
   public Faculty()
   {
     professors = new HashMap<String, Professor>();
@@ -24,8 +27,9 @@ public class Faculty
       System.out.println();
     }
   }
-    /**
-     * this method adds a new professor to the list of professors
+  /**
+   * this method adds a new professor to the list of professors
+   * @param proffesor 
    */
   public void addProfessor(Professor proffesor)
   {
