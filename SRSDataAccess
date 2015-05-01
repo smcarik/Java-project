@@ -76,7 +76,7 @@ public class SRSDataAccess
   
   
   /**
-   * This method reads data in from course catalog file
+   * This method reads data in from course catalog file and populates the course map
    * @return cat
    */
   public static CourseCatalog initializeCourseCatalog()
