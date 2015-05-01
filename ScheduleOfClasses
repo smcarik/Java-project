@@ -10,8 +10,6 @@ public class ScheduleOfClasses extends Section
    */
   private String semester;
   private HashMap<String, Section> sectionsOffered;
-  /**
-   * constructor to initialize the hash map sectionsOffered
   public ScheduleOfClasses()
   {
     sectionsOffered = new HashMap<String, Section>();
