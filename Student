@@ -31,8 +31,11 @@ public class Student extends Person
    
   }
   /*
-  * Creates a new student object with parameters for ssn, name, major, and degree.
-  * @param
+  * Constructor that initializes all variables to the given paramater values
+  * @param ssn the Social Security Number of the student
+  * @param name the name of the student
+  * @param major the student's major
+  * @param degree the student's degree
   */
   
   public Student(String ssn, String name, String major, String degree)
@@ -100,15 +103,16 @@ public class Student extends Person
     System.out.println("SSN: " + ssn + " Name: " + name + " Major: " + major + " Degree: " + degree);
   }
   /**
-   * displays information about the student
+   * @return info A string representation of the student's information.
    */
   public String toString()
   {
     //Code
-    return "SSN: " + ssn + " Name: " + name + " Major: " + major + " Degree: " + degree;
+    String info = "SSN: " + ssn + " Name: " + name + " Major: " + major + " Degree: " + degree;
+    return info;
   }
   /**
-   * return the CourseSchedule of the student
+   * @return a the Course Schedule of the student
    */
   public String displayCourseSchedule()
   {
