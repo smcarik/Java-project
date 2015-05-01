@@ -1,6 +1,6 @@
 /**
- * This class builds a frame with a menu and drop down options that can find a student, enroll a student,
- * drop a class, displays a students schedule, and finds a professor
+ * This class builds a frame with a menu and drop down options to display all the information!
+ * 
  */
 import java.awt.*;
 import java.awt.event.*;
@@ -23,9 +23,7 @@ public class MainFrame extends JFrame
   private Student student;
   private ScheduleOfClasses classes;
   private Faculty fucklety;
-  /**
-   * A constructor that ini
-   */
+  private boolean loggedIn;
   public MainFrame() 
   {
     super( "Main Frame" );
@@ -41,11 +39,14 @@ public class MainFrame extends JFrame
     JMenuItem studentSchedule = new JMenuItem("Display Course Schedule");
     JMenuItem addSection = new JMenuItem("Add Section");
     JMenuItem dropSection = new JMenuItem("Drop Section");
-   
+    JMenuItem viewTranscript = new JMenuItem("View Transcript");
     
     JMenu professor = new JMenu("Professor");
     JMenuItem findProfessor = new JMenuItem("Find Professor");
-  
+    JMenuItem teachingAssignments = new JMenuItem("Display Teaching Assignments");
+    JMenuItem studentRoster = new JMenuItem("Display Student Roster");
+    JMenuItem agreeToTeach = new JMenuItem("Agree to Teach a Course");
+    
     file.add( login ); // add new frame item to File menu
     file.add( logoff );
     file.add(close);
@@ -53,11 +54,11 @@ public class MainFrame extends JFrame
     student.add(studentSchedule);
     student.add(addSection);
     student.add(dropSection);
-    
+    student.add(viewTranscript);
     professor.add(findProfessor); // add new frame item to Professor menu
- 
-    
-    
+    professor.add(teachingAssignments);
+    professor.add(studentRoster);
+    professor.add(agreeToTeach);
     bar.add(file); // add File menu to menu bar
     bar.add(student); // add student menu to menu bar
     bar.add(professor);// add Professor menu to menu bar
@@ -79,8 +80,8 @@ public class MainFrame extends JFrame
     addSection.addActionListener(addSectionListener);
     ActionListener dropSectionListener = new DropSectionListener();
     dropSection.addActionListener(dropSectionListener);
-    
-   
+    ActionListener viewTranscriptListener = new ViewTranscriptListener();
+    viewTranscript.addActionListener(viewTranscriptListener);
     ActionListener findFacultyItemListener = new FindFacultyItemListener();
     findProfessor.addActionListener(findFacultyItemListener);
     
@@ -103,7 +104,7 @@ public class MainFrame extends JFrame
       theDesktop.add( loginFrame ); // attach internal frame
       loginFrame.setVisible( true ); // show internal frame
       loginFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-      
+      loggedIn = true;
     }
   }
   
@@ -145,6 +146,8 @@ public class MainFrame extends JFrame
   {
     public void actionPerformed(ActionEvent event)
     {
+      if(loggedIn)
+      {
       JInternalFrame findStudentFrame = new JInternalFrame("Find Student", true, true, true, true);
       findStudentFrame.setLayout(new GridLayout(6, 2, 0, 10));
       theDesktop.add(findStudentFrame);
@@ -186,7 +189,7 @@ public class MainFrame extends JFrame
       searchButton.addActionListener(handler2);
       
       
-      
+      }
     }
     private class LoginHandler2 implements ActionListener 
     {
@@ -232,6 +235,8 @@ public class MainFrame extends JFrame
   {
     public void actionPerformed(ActionEvent event)
     {
+      if(loggedIn)
+      {
       displaySchedule = new JInternalFrame("Schedule", true, true, true, true);
       displaySchedule.setLayout(new BorderLayout());
       theDesktop.add(displaySchedule);
@@ -247,7 +252,7 @@ public class MainFrame extends JFrame
       scheduleField.setVisible(true);
       
       displaySchedule.pack();
-      
+      }
     }
   }
   
@@ -257,7 +262,8 @@ public class MainFrame extends JFrame
     public void actionPerformed(ActionEvent event)
     {
       
-      
+      if(loggedIn)
+      {
       addSection = new JInternalFrame("Add Section", true, true, true, true);
       addSection.setLayout(new BorderLayout());
       northPanel = new JPanel();
@@ -290,6 +296,7 @@ public class MainFrame extends JFrame
       
       AddSectionListener2 addSectionListener2 = new AddSectionListener2();
       addSectionButton.addActionListener(addSectionListener2);
+      }
     }
   }
   
@@ -349,6 +356,8 @@ public class MainFrame extends JFrame
   {
     public void actionPerformed(ActionEvent event)
     {
+      if(loggedIn)
+      {
       dropSection = new JInternalFrame("Drop Section", true, true, true, true);
       dropSection.setLayout(new BorderLayout());
       dropNorthPanel = new JPanel();
@@ -380,6 +389,7 @@ public class MainFrame extends JFrame
       
       DropSectionListener2 dropitlikeitshotSectionListener2 = new DropSectionListener2();
       dropSectionButton.addActionListener(dropitlikeitshotSectionListener2);
+      }
     }
   }
   
@@ -444,6 +454,8 @@ public class MainFrame extends JFrame
   {
     public void actionPerformed(ActionEvent event)
     {
+      if(loggedIn)
+      {
       JInternalFrame findFacultyFrame = new JInternalFrame("Find Faculty", true, true, true, true);
       findFacultyFrame.setLayout(new GridLayout(6, 2, 0, 10));
       theDesktop.add(findFacultyFrame);
@@ -484,8 +496,8 @@ public class MainFrame extends JFrame
       LoginHandler3 handler3 = new LoginHandler3();
       facultySearchButton.addActionListener(handler3);
       
-    }
       
+      }
     }
     private class LoginHandler3 implements ActionListener 
     {
@@ -494,18 +506,7 @@ public class MainFrame extends JFrame
         if ( event.getSource() == facultySearchButton )
         {
           facultySsn = facultySsnText.getText();
-          if (fucklety.findProfessor(facultySsn)==null)
-          {
-          facultyNameResult.setText("There is no teacher under that ssn");
-          facultySsn2Result.setText("There is no teacher under that ssn");
-          facultyTitleResult.setText("There is no teacher under that ssn");
-          facultyDepartmentResult.setText("There is no teacher under that ssn");
-          }
-          
-          
-          else
-          {
-            Professor oak = fucklety.findProfessor(facultySsn);
+          Professor oak = fucklety.findProfessor(facultySsn);
           String name5 = oak.getName();
           String ssn5 = facultySsn;
           String title5 = oak.getTitle();
@@ -514,6 +515,7 @@ public class MainFrame extends JFrame
           facultySsn2Result.setText(ssn5);
           facultyTitleResult.setText(title5);
           facultyDepartmentResult.setText(department5);
+          
           }
         }
         
