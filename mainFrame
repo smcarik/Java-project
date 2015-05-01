@@ -13,7 +13,7 @@ public class MainFrame extends JFrame
 {
   private JDesktopPane theDesktop;
   private JPanel northPanel, southPanel, dropNorthPanel, dropSouthPanel;
-  private JInternalFrame loginFrame, loggedOff, findStudentFrame, displaySchedule, addSection, dropSection, viewTranscript;
+  private JInternalFrame loginFrame, loggedOff, findStudentFrame, displaySchedule, addSection, dropSection;
   private String userSsn, facultySsn;
   private JButton searchButton, addSectionButton, viewCatalogButton,  dropSectionButton,
     dropCatalogButton, facultySearchButton;
@@ -44,13 +44,11 @@ public class MainFrame extends JFrame
     JMenuItem studentSchedule = new JMenuItem("Display Course Schedule");
     JMenuItem addSection = new JMenuItem("Add Section");
     JMenuItem dropSection = new JMenuItem("Drop Section");
-    JMenuItem viewTranscript = new JMenuItem("View Transcript");
+   
     
     JMenu professor = new JMenu("Professor");
     JMenuItem findProfessor = new JMenuItem("Find Professor");
-    JMenuItem teachingAssignments = new JMenuItem("Display Teaching Assignments");
-    JMenuItem studentRoster = new JMenuItem("Display Student Roster");
-    JMenuItem agreeToTeach = new JMenuItem("Agree to Teach a Course");
+    
     
     file.add( login ); // add new frame item to File menu
     file.add( logoff );
@@ -59,11 +57,7 @@ public class MainFrame extends JFrame
     student.add(studentSchedule);
     student.add(addSection);
     student.add(dropSection);
-    student.add(viewTranscript);
     professor.add(findProfessor); // add new frame item to Professor menu
-    professor.add(teachingAssignments);
-    professor.add(studentRoster);
-    professor.add(agreeToTeach);
     bar.add(file); // add File menu to menu bar
     bar.add(student); // add student menu to menu bar
     bar.add(professor);// add Professor menu to menu bar
@@ -85,8 +79,6 @@ public class MainFrame extends JFrame
     addSection.addActionListener(addSectionListener);
     ActionListener dropSectionListener = new DropSectionListener();
     dropSection.addActionListener(dropSectionListener);
-    ActionListener viewTranscriptListener = new ViewTranscriptListener();
-    viewTranscript.addActionListener(viewTranscriptListener);
     ActionListener findFacultyItemListener = new FindFacultyItemListener();
     findProfessor.addActionListener(findFacultyItemListener);
     
@@ -392,6 +384,9 @@ public class MainFrame extends JFrame
     }
   }
   
+   /*
+   * creats a new JInternalFrame for dropping a section
+   */
   
   class DropSectionListener implements ActionListener
   {
@@ -434,6 +429,9 @@ public class MainFrame extends JFrame
     }
   }
   
+   /*
+   * removes the section from the students enrolled courses when the drop button is clicked
+   */
   
   class DropSectionListener2 implements ActionListener
   {
@@ -460,6 +458,10 @@ public class MainFrame extends JFrame
     }
   }
   
+   /*
+   * action listener for view catalog button
+   */
+  
   class ViewCatalogListener2 implements ActionListener
   {
     public void actionPerformed(ActionEvent event)
@@ -481,15 +483,10 @@ public class MainFrame extends JFrame
   }
   
   
-  class ViewTranscriptListener implements ActionListener
-  {
-    public void actionPerformed(ActionEvent event)
-    {
-      viewTranscript = new JInternalFrame("View Transcript",true,true,true,true);
-      
-      
-    }
-  }
+  
+   /*
+   * new listener that gets triggered when the find Faculty item from the drop list is clicked
+   */
   
     class FindFacultyItemListener implements ActionListener
   {
@@ -540,6 +537,11 @@ public class MainFrame extends JFrame
       
       }
     }
+     /*
+     * LoginHandler3 acts as a new Action Listener for facultySearchButton
+     *
+     */
+    
     private class LoginHandler3 implements ActionListener 
     {
       public void actionPerformed( ActionEvent event )
@@ -565,7 +567,9 @@ public class MainFrame extends JFrame
   
   
   
-  
+   /*
+   * Main method creates new desktop fram, and starts running the program
+   */
   
   public static void main( String[] args )
   {
