@@ -18,7 +18,7 @@ public class Student extends Person
   
   ArrayList<Section> attends;
 /*
- * Creates a new student object
+ * Creates a new student object with no parameters.
  */
   public Student()
   {
@@ -30,6 +30,11 @@ public class Student extends Person
    attends = new ArrayList<Section>();
    
   }
+  /*
+  * Creates a new student object with parameters for ssn, name, major, and degree.
+  * @param
+  */
+  
   public Student(String ssn, String name, String major, String degree)
   {
     this.name = name;
