@@ -12,7 +12,13 @@ public class TranscriptEntry extends Transcript
   private Transcript transcript;
   private Section section;
 
-  
+  /**
+   * Constructor that initializes all variables to given values
+   * @param grade the student's grade in the class
+   * @param the student
+   * @param the section the student was enrolled in
+   * @param the student's transcript
+   */
   
   public TranscriptEntry(String grade, Student student, Section section, Transcript transcript)
   {
@@ -85,7 +91,11 @@ public class TranscriptEntry extends Transcript
   {
     return transcript;
   }
-  
+  /**
+   * Verifies the student's grade in a class
+   * @param grade the student's given grade in a class
+   * @return true or false if the student's grade is found
+   */
   public Boolean validateGrade(String grade)
   {
     if (grade.equals("A") || grade.equals("A-") || grade.equals("B+") || grade.equals("B") ||
@@ -99,6 +109,12 @@ public class TranscriptEntry extends Transcript
       return false;
     }
   }
+  /**
+   * Checks to see if the student passed the class
+   * @param grade the student's class
+   * @return true or false if the student passed
+   */
+  
   public Boolean passingGrade(String grade)
   {
     if (grade.equals("A") || grade.equals("A-") || grade.equals("B+") || grade.equals("B") ||
