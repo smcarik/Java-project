@@ -1,6 +1,6 @@
 /**
- * This class builds a frame with a menu and drop down options to display all the information!
- * 
+ * This class builds a frame with a menu and drop down options that can find a student, enroll a student,
+ * drop a class, displays a students schedule, and finds a professor
  */
 import java.awt.*;
 import java.awt.event.*;
@@ -24,6 +24,11 @@ public class MainFrame extends JFrame
   private ScheduleOfClasses classes;
   private Faculty fucklety;
   private boolean loggedIn;
+  
+  
+ /**
+  * A constructor that initialzes our menu and menu items as well as many of our listeners and variables
+  */
   public MainFrame() 
   {
     super( "Main Frame" );
@@ -92,7 +97,9 @@ public class MainFrame extends JFrame
   }
   
   
-  
+  /**
+   * this is the listener for when login is clicked, it makes a login frame
+   */
   
   
   class LoginItemListner implements ActionListener
@@ -107,6 +114,10 @@ public class MainFrame extends JFrame
       loggedIn = true;
     }
   }
+  
+  /**
+   * listener for logoff menu item, it saves the data to a file and logs off
+   */
   
   class LogoffItemListner implements ActionListener
   {
@@ -132,6 +143,10 @@ public class MainFrame extends JFrame
   
   
   
+  /**
+   * listener for our close menu item, it closes the GUI
+   */
+
   
   
   class CloseItemListener implements ActionListener
@@ -141,6 +156,12 @@ public class MainFrame extends JFrame
       dispose();
     }
   }
+  
+  
+ /**
+   * listener for our find student menu item, it makes a internal frame with text fields to display student information, a button for searching for a student,
+   * and a text field for users to put students ssn
+   */
   
   class FindStudentItemListener implements ActionListener
   {
@@ -191,6 +212,11 @@ public class MainFrame extends JFrame
       
       }
     }
+    /**
+     * listener for the search button in the find student GUI, this checks to see if we have a student file with the user given ssn
+     * and if there is one initializes the student and displays all of his/her information
+     */
+    
     private class LoginHandler2 implements ActionListener 
     {
       public void actionPerformed( ActionEvent event )
@@ -228,7 +254,9 @@ public class MainFrame extends JFrame
   
   
   
-  
+  /**
+   * listener for the display course schedule menu item, this makes a internal frame which shows the current classes the student is taking
+   */
   
   
   class DisplayCourseScheduleListener implements ActionListener
@@ -256,6 +284,10 @@ public class MainFrame extends JFrame
     }
   }
   
+  /**
+   * listener for the add section menu item, this makes an internal frame with text fields asking for the user to input full section number,
+   * a text field for results, and an add section button
+   */
   
   class AddSectionListener implements ActionListener
   {
@@ -300,6 +332,11 @@ public class MainFrame extends JFrame
     }
   }
   
+  /**
+   * the listener for the add section button which searches the course catalog the user entered section number and displays enrolls the student,
+   * or if they could not enroll shows an error message why
+   */
+  
   class AddSectionListener2 implements ActionListener
   {
     public void actionPerformed(ActionEvent event)
@@ -330,6 +367,10 @@ public class MainFrame extends JFrame
       }
     }
   }
+  
+  /**
+   * listener for the view catalog button in add section internal frame, this displays all the courses available for the student to take
+   */
   
   class ViewCatalogListener implements ActionListener
   {
