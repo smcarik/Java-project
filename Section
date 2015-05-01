@@ -295,8 +295,8 @@ public class Section extends Course
     // I dont know how to add the grade to the map, given that the value type is TranscriptEntry
   }
   /**
-   * checks too see if this section is offered as a user input course
-   * @param course
+   * checks to see if this section is offered as a user input course
+   * @param course the course being checked to see whether a section is offered of it.
    **/
   public Boolean isSectionOf(Course course)
   {
